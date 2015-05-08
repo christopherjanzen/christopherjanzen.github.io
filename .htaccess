@@ -4,7 +4,6 @@
  deny from all
 </Files>
 
-
 RewriteEngine On
 
 # Redirect non www to www
