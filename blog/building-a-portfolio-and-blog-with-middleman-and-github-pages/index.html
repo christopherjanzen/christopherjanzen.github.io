@@ -27,7 +27,7 @@
 	<article>
 		<h1>Building a Portfolio and Blog with Middleman and Github Pages</h1>
 			<p class="subtitle">A primer on setting up the tools needed to use Middleman</p>
-		<p>Over a series of posts I hope to describe my journey through setting up this website using Middleman on Github. I found a lot of resources but many of them were outdated (mine will be soon enough as well but please contact me so I can update it if you notice anything no longer works) and vague about how to get things working. I like to think I have a good grasp on finding the resource I need to get going but there were a few rough patches that eventually led to eureka moments that I&rsquo;d like to cover through these posts.</p>
+		<p>Over a series of posts I hope to describe my journey through setting up this website using Middleman on Github. I found a lot of resources but many of them were outdated (mine will be soon enough as well but please contact me so I can update it if you notice anything no longer works) and vague about how to get things working. I like to think I have a good grasp on finding the resources I need to get going but there were a few rough patches that eventually led to eureka moments that I&rsquo;d like to cover through these posts.</p>
 
 <p>This first post is going to cover what we need before we should even begin to work with Middleman itself.</p>
 
@@ -115,18 +115,18 @@ To start we are going to install rbenv, ruby-build, rbenv-default-gems, rbenv-ge
 This will go ahead and install everything in one fell swoop.
 Now we have to add a file so that rbenv can run when we launch Terminal. Towards the top of our install log will be a line that says:</p>
 
-<pre><code class="language-bash">if which rbenv &gt; /dev/null; then eval “$(rbenv init -)”; fi
+<pre><code class="language-bash">if which rbenv &gt; /dev/null; then eval "$(rbenv init -)"; fi
 </code></pre>
 
 <p>We’re going to copy that and then, at our prompt, type:</p>
 
-<pre><code class="language-bash">$ echo ‘if which rbenv &gt; /dev/null; then eval “$(rbenv init -)”; fi’ &gt; ~/.profile
+<pre><code class="language-bash">$ echo 'if which rbenv &gt; /dev/null; then eval "$(rbenv init -)"; fi' &gt; ~/.profile
 </code></pre>
 
 <p>The &rsquo;.profile&rsquo; file is opened along with Terminal every time and initializes rbenv.
 If you don’t want documentation to be installed every time you install gems (documentation takes longer to install) then you’ll also want to type:</p>
 
-<pre><code class="language-bash">$ echo ‘gem: --no-document’ &gt; ~/.gemrc
+<pre><code class="language-bash">$ echo 'gem: --no-document' &gt; ~/.gemrc
 </code></pre>
 
 <p>You can then type: <code>$ exit</code> and the process will be completed! this will close the Terminal window and you should now open a new one.</p>
