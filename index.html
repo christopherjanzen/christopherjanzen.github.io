@@ -33,19 +33,33 @@
 	</div>
 	<img id="profile" src="images/profile_opt.jpg" />
 </header>
-<div class="contact-form">
-	<h3>Get in Touch</h3>
-	<form id="contact" action="//formspree.io/chrisisaakjanzen@gmail.com" method="POST">
-	    <input type="text" name="name" placeholder="Your name">
-	    <input type="email" name="_replyto" placeholder="Your email">
-	    <input type="tel" name="telephone" placeholder="Your phone number">
-	    <textarea name="message" rows="5" placeholder="Your message"></textarea>
-	    <button type="submit" value="Send">Send</button>
-	    <input type="hidden" name="_subject" value="christopherjanzen.com Contact" />
-	    <input type="text" name="_gotcha" style="display:none" />
-	    <input type="hidden" name="_next" value="/thankyou" />
-	</form>
-</div>
+<section class="recent-posts">
+	<div class="posts">
+		<h1><a href="blog/">Recent </br>Articles</a></h1>
+			<div class="article-post">
+		      <h4 class="article-date">Jun 16</h4>
+		      <h4 class="article-category">| <a href="/blog/categories/code/">Code</a></h4>
+		      <h2 class="article-title"><a href="blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/">Building a Portfolio and Blog with Middleman and Github Pages</a></h2>
+		        <p class="article-summary">A primer on setting up the tools needed to use Middleman</p>
+		  	    <a class="read-more" href="blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/">Read</a>
+		    </div>
+	</div>
+</section>
+<section class="contact">
+	<div class="contact-form">
+		<form id="contact" action="//formspree.io/chrisisaakjanzen@gmail.com" method="POST">
+			<h1>Get in Touch</h1>
+		    <input type="text" name="name" placeholder="Your name">
+		    <input type="email" name="_replyto" placeholder="Your email">
+		    <input type="tel" name="telephone" placeholder="Your phone number">
+		    <textarea name="message" rows="5" placeholder="Your message"></textarea>
+		    <button type="submit" value="Send">Send</button>
+		    <input type="hidden" name="_subject" value="christopherjanzen.com Contact" />
+		    <input type="text" name="_gotcha" style="display:none" />
+		    <input type="hidden" name="_next" value="/thankyou" />
+		</form>
+	</div>
+</section>
 <script>
 	svgeezy.init(false, 'png');
 </script>

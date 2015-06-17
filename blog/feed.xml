@@ -31,9 +31,176 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/blog/feed.xml" rel="self"/>
+  <updated>2015-06-15T19:00:00-05:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Building a Portfolio and Blog with Middleman and Github Pages</title>
+    <link rel="alternate" href="http://blog.url.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/"/>
+    <id>http://blog.url.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/</id>
+    <published>2015-06-15T19:00:00-05:00</published>
+    <updated>2015-06-16T20:54:19-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Over a series of posts I hope to describe my journey through setting up this website using Middleman on Github. I found a lot of resources but many of them were outdated (mine will be soon enough as well but please contact me so I can update it if you notice anything no longer works) and vague about how to get things working. I like to think I have a good grasp on finding the resource I need to get going but there were a few rough patches that eventually led to eureka moments that I&amp;rsquo;d like to cover through these posts.&lt;/p&gt;
+
+&lt;p&gt;This first post is going to cover what we need before we should even begin to work with Middleman itself.&lt;/p&gt;
+
+&lt;h2&gt;Why choose Middleman?&lt;/h2&gt;
+
+&lt;p&gt;After realizing that I just needed a simple (hah, thats relative) tool to allow me to build a portfolio website with a blog I began digging around for something that would be lighter than Wordpress. Wordpress is great but it can weigh you down if you don&amp;rsquo;t tame it. I didn&amp;rsquo;t want to have to fight a system in order to do what I wanted, plus I wanted to learn something new (and boy, did I ever).&lt;/p&gt;
+
+&lt;p&gt;Jekyll, another static site generator, just didn&amp;rsquo;t seem to quite align with what I was looking for. Honestly I don&amp;rsquo;t even remember the reasons why right now, but that&amp;rsquo;s when I stumbled upon Middleman.&lt;/p&gt;
+
+&lt;p&gt;Middleman and Jekyll both offer pretty much the same thing: A simple static website generator with a great community and lots of extensions to help you get stuff done quicker.
+The real kicker is that because we&amp;rsquo;re using static html, css, and javascript we can get away with very little hosting resources. In fact, we can host our sites for free using Github Pages. &lt;/p&gt;
+
+&lt;p&gt;In the next few articles I&amp;rsquo;ll go over getting everything set up and hosted on Github, but for now we&amp;rsquo;ll start at the beginning.&lt;/p&gt;
+
+&lt;h2&gt;Getting The Apps&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start with what you&amp;rsquo;ll need before we can get anywhere at all. 
+I developed my site on a Mac running OS X 10.10 but this would apply to a few older generations as well I&amp;rsquo;m sure.
+First thing we need is a text editor and terminal or similar (I used &lt;a href="sublimetext.com"&gt;Sublime Text 3&lt;/a&gt; and &lt;a href="https://www.iterm2.com"&gt;iTerm&lt;/a&gt; respectively).
+You&amp;rsquo;ll be using terminal for installing a number of tools and making sure they are up to date. The text editor is for writing your code of course (One day I&amp;rsquo;ll write a post on my Sublime Text 3 setup). 
+At this point if you have a minimal understanding of how Terminal works you might be concerned, but I had never dealt with Terminal prior to this so as the adage goes, “If I can do it, you can do it too”. I am assuming familiarity with HTML and CSS (that won’t come up in this article). Knowledge of Ruby and Markdown would probably help (I wouldn’t know, I had zero knowledge at the time of starting) but not necessary if you&amp;rsquo;re keeping things simple. 
+These are actually the only apps we need to get started!&lt;/p&gt;
+
+&lt;h2&gt;Installing The Tools&lt;/h2&gt;
+
+&lt;p&gt;Without prior knowledge in the area of installing things through the command line, I found it difficult to find resources that broke down the process so hopefully this helps you get started properly. &lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: If you have access to a Treehouse membership there&amp;rsquo;s a great workshop video on getting command line tools, Homebrew, and Ruby (running through RBenv) installed on your system &lt;a href="https://teamtreehouse.com/library/installing-a-ruby-on-rails-development-environment-in-os-x"&gt;here&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3&gt;Command Line Tools&lt;/h3&gt;
+
+&lt;p&gt;First things first we are going to install Command Line Tools
+&lt;a href="http://railsapps.github.io/xcode-command-line-tools.html"&gt;Here’s a great article&lt;/a&gt; on how to do just that.
+The reason we are downloading these tools is to gain access to commonly used tools like git.
+The big take away from the article (ie. how to do it) is to open Terminal and type this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;
+$ xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: Don’t type the $ sign. This is just an indication that you should be writing the following text into your command prompt. You should also be pressing &lt;code&gt;return&lt;/code&gt; after typing each line of code.
+Notice that you don’t need to install Xcode before installing the Command Line Tools. If you aren’t going to be doing development for Apple based Operating Systems then skip this cause its a large and lengthy app install.&lt;/p&gt;
+
+&lt;p&gt;Okay, so we should now have Command Line Tools installed. you can confirm by typing this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ xcode-select -p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will reveal the path to the installed location of the tools.&lt;/p&gt;
+
+&lt;h3&gt;Setting up Homebrew&lt;/h3&gt;
+
+&lt;p&gt;Next up we’ll be installing something called Homebrew which is described as “Homebrew installs the stuff you need that Apple didn’t”. Essentially this is a package manager that will make it much easier to install &amp;ldquo;stuff&amp;rdquo; like rbenv (we’ll use this to install Ruby), keep that &amp;ldquo;stuff&amp;rdquo; up to date, and in an organized location so everything is easy to find.
+Find out more at: &lt;a href="brew.sh"&gt;brew.sh&lt;/a&gt; if you are interested in learning more. Otherwise copy the following into your prompt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will install Homebrew on your system. It’s a good practice to make sure everything is up to date and working by running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew update
+$ brew doctor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cool, You should now have Homebrew installed on your system. Emoticons of beer (Homebrew, get it?)&amp;hellip;&lt;/p&gt;
+
+&lt;h3&gt;Installing Rbenv&lt;/h3&gt;
+
+&lt;p&gt;Okay, so now that we’ve installed Homebrew we are going to use it to install rbenv which will then allow us to install Ruby. 
+&lt;a href="https://github.com/sstephenson/rbenv"&gt;Rbenv&lt;/a&gt; is a version manager that allows you to use different versions of Ruby for different projects. If we’re doing simple stuff like installing Middleman this won’t matter too much but it’s an easy way to get up and running. 
+Rbenv is only one of many version managers available. You could also checkout RVM if you want something that some consider more robust and with a larger support community. Each version manager has its own pros and cons which won’t be discussed here, but if you are interested, &lt;a href="http://albertogrespan.com/blog/installing-ruby-the-right-way-on-os-x-using-rbenv/"&gt;these&lt;/a&gt; are a few &lt;a href="https://robots.thoughtbot.com/using-rbenv-to-manage-rubies-and-gems"&gt;articles&lt;/a&gt; which discuss them.
+Enough background history, let’s actually do something.
+To start we are going to install rbenv, ruby-build, rbenv-default-gems, rbenv-gem-rehash, and optionally rbenv-vars using this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew install rbenv ruby-build rbenv-default-gems rbenv-gem-rehash rbenv-vars
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/ruby-build"&gt;Ruby-build&lt;/a&gt; is a “plugin that provides an rbenv install command to compile and install different versions of Ruby on UNIX-like systems.”&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/rbenv-default-gems"&gt;Rbenv-default-gems&lt;/a&gt; is a plugin that “hooks into the rbenv install command to automatically install gems every time you install a new version of Ruby.”&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/rbenv-gem-rehash"&gt;Rbenv-gem-rehash&lt;/a&gt; is a plugin that “automatically runs rbenv rehash every time you install or uninstall a gem.” Essentially it’s a quick time saver.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/rbenv-vars"&gt;Rbenv-vars&lt;/a&gt; is a “plugin for rbenv that lets you set global and project-specific environment variables before spawning Ruby processes.”
+This will go ahead and install everything in one fell swoop.
+Now we have to add a file so that rbenv can run when we launch Terminal. Towards the top of our install log will be a line that says:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;if which rbenv &amp;gt; /dev/null; then eval “$(rbenv init -)”; fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’re going to copy that and then, at our prompt, type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ echo ‘if which rbenv &amp;gt; /dev/null; then eval “$(rbenv init -)”; fi’ &amp;gt; ~/.profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &amp;rsquo;.profile&amp;rsquo; file is opened along with Terminal every time and initializes rbenv.
+If you don’t want documentation to be installed every time you install gems (documentation takes longer to install) then you’ll also want to type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ echo ‘gem: --no-document’ &amp;gt; ~/.gemrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can then type: &lt;code&gt;$ exit&lt;/code&gt; and the process will be completed! this will close the Terminal window and you should now open a new one.&lt;/p&gt;
+
+&lt;h3&gt;Installing Ruby&lt;/h3&gt;
+
+&lt;p&gt;We’ll finally be installing ruby. At this time the most current version is 2.2.2 but you can always check at &lt;a href="ruby-lang.org"&gt;ruby-lang.org&lt;/a&gt; or by typing &lt;code&gt;$ rbenv install --list&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ rbenv install 2.2.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’re now going to tell rbenv to use this version of Ruby by typing: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ rbenv global 2.2.2
+$ rbenv rehash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now be able to type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ ruby -v 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and see that the latest version is being used.
+As mentioned in the treehouse video, a few other tools you might want to install are wget, curl, and imagemagick.
+Type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew install wget curl imagemagick
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’ll also want to update to the latest version of Rubygems by typing: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ gem update --system
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Installing Bundler&lt;/h3&gt;
+
+&lt;p&gt;We are now going to install a Ruby gem called &lt;a href="http://bundler.io"&gt;Bundler&lt;/a&gt; which allows us to install and manage gems that we’ll be using in our apps like Middleman.
+Type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ gem install bundler
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, we’ll install a plugin that makes for less work when we install gems. &lt;a href="https://github.com/carsomyr/rbenv-bundler"&gt;Rbenv-bundler&lt;/a&gt; “saves you from the hassle of having to type bundle exec when working with per-project gem sets and will enable &lt;code&gt;rbenv which&lt;/code&gt; to report Bundler-installed gem executables if available.”&lt;/p&gt;
+
+&lt;p&gt;Type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew install rbenv-bundler
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Okay! We are finally done installing the tools necessary to get started with Middleman. It seems like a lot of work just to get up and running but this will make everything else go a lot smoother down the road. There are definitely other gems, plugins, etc. that can make our lives even easier but these are just a few I’ve discovered from different articles.
+Please let me know if you discover any errors here and if you have an suggestions for more useful tools on Twitter &lt;a href="https://twitter.com/cijanzen"&gt;@cijanzen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the next article we’ll actually be installing Middleman and running it on a local server. Go take a break and give yourself a high-five because you just got through the worst of it (I felt like cracking open as many beers as I saw emoticons during this process)!&lt;/p&gt;
+</content>
+  </entry>
 </feed>
 
 		<script>

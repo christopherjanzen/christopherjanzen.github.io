@@ -1,15 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/</loc>
+    <lastmod>2015-06-16T20:54:19-05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://www.christopherjanzen.com/</loc>
-    <lastmod>2015-05-06T22:33:52-05:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2015-06-16T19:29:47-05:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.christopherjanzen.com/thankyou/</loc>
     <lastmod>2015-05-06T22:33:58-05:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.christopherjanzen.com/blog/2015/</loc>
+    <lastmod>2015-06-16T20:53:43-05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.christopherjanzen.com/blog/2015/06/</loc>
+    <lastmod>2015-06-16T20:53:43-05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.christopherjanzen.com/blog/2015/06/16/</loc>
+    <lastmod>2015-06-16T20:53:43-05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.christopherjanzen.com/blog/categories/code/</loc>
+    <lastmod>2015-06-16T19:36:36-05:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>
