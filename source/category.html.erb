@@ -1,0 +1,33 @@
+---
+title: "Christopher Janzen | Articles Categorized as "
+pageable: true
+per_page: 12
+---
+<% @title = category %>
+<% if paginate && num_pages > 1 %>
+  <p>Page <%= page_number %> of <%= num_pages %></p>
+
+  <% if prev_page %>
+    <p><%= link_to 'Previous page', prev_page %></p>
+  <% end %>
+<% end %>
+
+<section class="article-listing">
+  <h1>Articles categorized as <%= category %></h1>
+  <% page_articles.each_with_index do |article, i| %>
+    <div class="article-post">
+      <h4 class="article-date"><%= article.date.strftime('%b %e') %></h4>
+      <h2 class="article-title"><%= link_to article.title, article %></h2>
+      <% if article.data['summary'] != nil %>
+        <p class="article-summary"><%= article.data['summary'] %></p>
+        <%= link_to 'Read', article, class: 'read-more' %>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+
+<% if paginate %>
+  <% if next_page %>
+    <p><%= link_to 'Next page', next_page %></p>
+  <% end %>
+<% end %>

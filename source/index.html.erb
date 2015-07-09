@@ -1,0 +1,48 @@
+---
+title: Christopher Janzen Winnipeg freelance web designer
+---
+
+<section class="intro">
+	<div class="brand-text">
+		<% link_to 'http://www.christopherjanzen.com', :id => 'logo' do %>
+	  		<%= image_tag 'logo.svg' %>
+		<% end %>
+		<h1 id="brand">Christopher Janzen</h1>
+		<h2 id="tagline">Winnipeg-based freelance web designer</h2>
+		<a href="#contact" class="big-link">Contact</a>
+	</div>
+	<%= image_tag 'profile_opt.jpg', :id => 'profile' %>
+</section>
+<section class="recent-posts">
+	<div class="posts">
+		<h1><%= link_to 'Recent </br>Articles', 'blog/' %></h1>
+		<% blog.articles[0...3].each do |article| %>
+			<div class="article-post">
+		      <h4 class="article-date"><%= article.date.strftime('%b %e') %></h4>
+		      <% if article.data['category'] != nil %>
+		      <h4 class="article-category">| <%= link_to article.data['category'], category_path(article.data['category']) %></h4>
+		      <% end %>
+		      <h2 class="article-title"><%= link_to article.title, article %></h2>
+		      <% if article.data['summary'] != nil %>
+		        <p class="article-summary"><%= article.data['summary'] %></p>
+		  	    <%= link_to 'Read', article, class: 'read-more' %>
+		  	  <% end %>
+		    </div>
+	    <% end %>
+	</div>
+</section>
+<section class="contact">
+	<div class="contact-form">
+		<form id="contact" action="//formspree.io/chrisisaakjanzen@gmail.com" method="POST">
+			<h1>Get in Touch</h1>
+		    <input type="text" name="name" placeholder="Your name">
+		    <input type="email" name="_replyto" placeholder="Your email">
+		    <input type="tel" name="telephone" placeholder="Your phone number">
+		    <textarea name="message" rows="5" placeholder="Your message"></textarea>
+		    <button type="submit" value="Send">Send</button>
+		    <input type="hidden" name="_subject" value="christopherjanzen.com Contact" />
+		    <input type="text" name="_gotcha" style="display:none" />
+		    <input type="hidden" name="_next" value="/thankyou" />
+		</form>
+	</div>
+</section>

@@ -1,0 +1,11 @@
+<%= partial "layouts/blog/blog_header" %>
+	<article>
+		<h1><%= current_article.title %></h1>
+		<% if current_article.data.subtitle != nil %>
+			<p class="subtitle"><%= current_article.data.subtitle %></p>
+		<% end %>
+		<%= yield %>
+	</article>
+</div>
+<%= partial "layouts/blog/blog_aside" %>
+<%= partial "layouts/blog/blog_footer" %>

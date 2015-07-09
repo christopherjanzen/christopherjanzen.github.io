@@ -1,0 +1,53 @@
+---
+title: "Christopher Janzen | Articles from "
+pageable: true
+---
+<% case page_type
+   when 'day' %>
+      <% date = Date.new(year, month, day).strftime('%b %e %Y') %>
+  <% when 'month' %>
+      <% date = Date.new(year, month, 1).strftime('%b %Y') %>
+  <% when 'year' %>
+      <% date = year %>
+<% end %>
+<% @title = date %>
+
+<% if paginate && num_pages > 1 %>
+  <p>Page <%= page_number %> of <%= num_pages %></p>
+
+  <% if prev_page %>
+    <p><%= link_to 'Previous page', prev_page %></p>
+  <% end %>
+<% end %>
+
+<section class="article-listing">
+  <h1>Archive for
+    <% case page_type
+       when 'day' %>
+      <%= Date.new(year, month, day).strftime('%b %e %Y') %>
+    <% when 'month' %>
+      <%= Date.new(year, month, 1).strftime('%b %Y') %>
+    <% when 'year' %>
+      <%= year %>
+    <% end %>
+  </h1>
+  <% page_articles.each_with_index do |article, i| %>
+    <div class="article-post">
+      <h4 class="article-date"><%= article.date.strftime('%b %e') %></h4>
+      <% if article.data['category'] != nil %>
+      <h4 class="article-category">| <%= link_to article.data['category'], category_path(article.data['category']) %></h4>
+      <% end %>
+      <h2 class="article-title"><%= link_to article.title, article %></h2>
+      <% if article.data['summary'] != nil %>
+        <p class="article-summary"><%= article.data['summary'] %></p>
+        <%= link_to 'Read', article, class: 'read-more' %>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+
+<% if paginate %>
+  <% if next_page %>
+    <p><%= link_to 'Next page', next_page %></p>
+  <% end %>
+<% end %>

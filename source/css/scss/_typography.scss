@@ -1,0 +1,237 @@
+//Using modularscale.com Bases: 1.125 (18px), 1.375 (22px) and ratio of 1.414 (Augmented 4th)
+$modular-scale-ratio: $augmented-fourth;
+$modular-scale-base: 1.125em 1.375em;
+
+html {
+	text-rendering: optimizelegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 16px;
+	line-height: 1.414;
+	color: #333;
+	color: rgba(0, 0, 0, 0.80);
+}
+
+// HEADINGS
+h1 {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(4);
+	@include media($medium) {
+		font-size: modular-scale(6);
+	}
+	@include media($large) {
+		font-size: modular-scale(8);
+	}
+	font-weight: 400;
+	line-height: 1;
+	// text-transform: uppercase;
+	// text-align: center;
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+}
+.article-listing h1, .recent-posts h1, .contact-form h1 {
+	text-align: left;
+	@include media($large) {
+		font-size: modular-scale(6);
+	}
+}
+
+h2 {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(3);
+	@include media($medium) {
+		font-size: modular-scale(4);
+	}
+	@include media($large) {
+		font-size: modular-scale(5);
+	}
+	margin-top: modular-scale(2);
+	font-weight: 400;
+	line-height: 1.3;
+	&.serif {
+		font-family: 'freight-text-pro', 'times', 'georgia', serif;
+	}
+	&.article-title {
+		margin: 0 0 .5rem;
+		@include media($medium) {
+			margin: 0 0 1rem;
+		}
+	}
+}
+h3 {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(2);
+	@include media($medium) {
+		font-size: modular-scale(3);
+	}
+	@include media($large) {
+		font-size: modular-scale(4);
+	}
+	font-weight: 400;
+	line-height: 1;
+}
+h4 {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(0);
+	font-weight: 400;
+	&.article-date {
+		text-transform: uppercase;
+		margin: 0 0 .5rem;
+		@include media($medium) {
+			margin: 0 0 1rem;
+		}
+	}
+	&.article-category {
+		margin: 0;
+		text-transform: uppercase;
+		a {
+			text-decoration: none;
+			color: #FF4D72;
+		}
+	}
+}
+
+//TEXT
+p {
+	font-family: 'freight-text-pro', 'times', 'georgia', serif;
+	font-weight: 400;
+	font-size: 1.222em;
+	@include media($medium) {
+		font-size: modular-scale(1);
+	}
+	@include media($large) {
+		font-size: modular-scale(1);
+		line-height: 1.5;
+	}
+	&.article-summary {
+		margin: 0 0 .5rem;
+		@include media($medium) {
+			margin: 0 0 1rem;
+		}
+	}
+	&.subtitle {
+		font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+		font-size: modular-scale(1);
+		@include media($medium) {
+			font-size: modular-scale(2);
+		}
+		@include media($large) {
+			font-size: modular-scale(3);
+		}
+		// line-height: modular-scale(1);
+		font-weight: 400;
+		color: #444;
+		color: rgba(0, 0, 0, 0.7);
+		border-top: 1px solid;
+		border-bottom: 1px solid;
+		padding: modular-scale(1) 0;
+		// text-align: center;
+		margin: modular-scale(1) 0;
+	}
+}
+article p:last-of-type {
+	margin-bottom: modular-scale((1)*4);
+}
+p a {
+	color: #5BC0BE;
+	// text-decoration: none;
+ //    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 50%);
+ //    background-repeat: repeat-x;
+ //    background-size: 2px 2px;
+ //    background-position: 0 23px;
+ //    @media only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:2dppx), only screen and (-webkit-min-device-pixel-ratio:2) {
+	//     body.is-withMagicUnderlines .markup--anchor {
+	//         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.8) 75%);
+	//         background-repeat: repeat-x
+	//     }
+	// }
+}
+p a:visited {
+	color: #564D65;
+}
+code {
+	font-family: 'Input Mono', 'monaco', 'Andale Mono', monospace;
+}
+p code {
+	color: #FF4D72;
+	font-size: 0.8em;
+}
+blockquote {
+	font-style: italic;
+	border-left: 6px solid #5BC0BE;
+	padding-left: modular-scale(0);
+	margin: 0;
+}
+
+//LINKS
+.article-title a {
+	text-decoration: none;
+	color: #333;
+}
+a.read-more {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(0);
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #5BC0BE;
+}
+.nav ul a {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(0);
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #5BC0BE;
+}
+
+//COMPONENTS
+input, textarea {
+	font-family: 'freight-text-pro', 'times', 'georgia', serif;
+	font-size: modular-scale(0);
+	font-weight: 400;
+}
+button {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(2);
+	font-weight: 400;
+	line-height: 1;
+}
+
+#brand {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: 3em; //63px at desktop size 48px at mobile size
+	font-size: modular-scale(5);
+	@include media($medium) {
+		font-size: modular-scale(6);
+	}
+	@include media($large) {
+		font-size: modular-scale(7);
+	}
+	font-weight: 400;
+	color: #5BC0BE;
+	line-height: 1;
+	text-transform: uppercase;
+	text-align: left;
+	letter-spacing: -0.01em;
+}
+
+#tagline {
+	font-family: 'freight-big-pro', 'times', 'georgia', serif;
+	font-size: 2.25em; //47.25px at desktop size 36px at mobile size
+	font-size: modular-scale(4);
+	@include media($large) {
+		font-size: modular-scale(6);
+	}
+	font-weight: 400;
+	color: #4A4A4A;
+	line-height: 1;
+}
+.big-link {
+	font-family: 'futura-pt', 'futura', 'avenir', 'helvetica', sans-serif;
+	font-size: modular-scale(2);
+	font-weight: 400;
+	line-height: 1;
+	text-decoration: none;
+	color: #5BC0BE;
+	text-transform: uppercase;
+}
