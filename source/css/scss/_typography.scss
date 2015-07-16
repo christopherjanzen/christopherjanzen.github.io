@@ -93,7 +93,7 @@ h4 {
 }
 
 //TEXT
-p {
+p, article li {
 	font-family: 'freight-text-pro', 'times', 'georgia', serif;
 	font-weight: 400;
 	font-size: 1.222em;
@@ -133,7 +133,7 @@ p {
 article p:last-of-type {
 	margin-bottom: modular-scale((1)*4);
 }
-p a {
+p a, li a {
 	color: #5BC0BE;
 	// text-decoration: none;
  //    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 50%);
@@ -147,7 +147,7 @@ p a {
 	//     }
 	// }
 }
-p a:visited {
+p a:visited, li a:visited {
 	color: #564D65;
 }
 code {
@@ -162,6 +162,13 @@ blockquote {
 	border-left: 6px solid #5BC0BE;
 	padding-left: modular-scale(0);
 	margin: 0;
+}
+article ul {
+	padding-left: 22px;
+	margin: modular-scale(1) auto;
+}
+.nobr {
+	white-space: nowrap;
 }
 
 //LINKS

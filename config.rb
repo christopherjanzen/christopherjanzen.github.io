@@ -5,7 +5,6 @@
 set :site_url, "http://www.christopherjanzen.com"
 set :site_description, "Winnipeg Based Freelance Web Designer"
 
-
 Time.zone = "Central Time (US & Canada)"
 
 # Add blogging to Middleman Install
