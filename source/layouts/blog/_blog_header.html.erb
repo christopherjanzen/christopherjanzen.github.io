@@ -14,7 +14,7 @@
 		<meta property="og:title" content="<%= current_article.title %>">
 		<meta property="og:description" content="<%= current_article.data.description %>">
 		<% if current_article.data.header_image != nil %>
-		<meta property="og:image" content="<%= settings.url_root %><%= image_path(current_article.data.header_image) %>">
+		<meta property="og:image" content="<%= settings.url_root %><%= url_for image_path(current_article.data.header_image), :relative => false %>">
 		<% end %>
 		<%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 		<%= stylesheet_link_tag "style" %>
