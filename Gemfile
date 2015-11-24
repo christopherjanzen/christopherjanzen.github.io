@@ -3,7 +3,8 @@
 source 'https://rubygems.org'
 
 #gem "middleman", "~>3.3.12"
-gem 'middleman', github: 'middleman/middleman', branch: 'v3-stable'
+# gem 'middleman', github: 'middleman/middleman', branch: 'v3-stable'
+gem "middleman"
 
 # Live-reloading plugin
 gem "middleman-livereload", "~> 3.1.0"
