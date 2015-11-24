@@ -188,7 +188,17 @@ img#footer-logo {
 }
 
 .header-image {
+  position: relative;
+}
+.header-image,
+#header-image {
 	width: 100%;
+}
+a.image-attr {
+  position: absolute;
+  bottom: modular-scale(-2);
+  right: 0;
+  padding: 0 1em;
 }
 
 // Blog archive page

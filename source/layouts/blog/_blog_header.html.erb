@@ -42,10 +42,12 @@
 		</header>
 		<div id="main" role="main">
 			<% if current_article.data.header_image != nil %>
-				<%= image_tag current_article.data.header_image, class: 'header-image' %>
-			<% end %>
-      <% if current_article.data.image_attr != nil %>
-				<% link_to current_article.data.image_attr, class: 'image-attr' do %>
-          <%= current_article.data.image_attr %>
-        <% end %>
+        <div class="header-image">
+				<%= image_tag current_article.data.header_image, id: 'header-image' %>
+        <% if current_article.data.image_attr != nil %>
+  				<% link_to current_article.data.image_attr, class: 'image-attr' do %>
+            <%= current_article.data.image_attr %>
+          <% end %>
+  			<% end %>
+        </div>
 			<% end %>
