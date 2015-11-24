@@ -12,6 +12,7 @@
 
 # Ignore Source images directory
 /image
+/Images
 
 # Ignore cache
 /.sass-cache
