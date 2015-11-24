@@ -21,8 +21,9 @@
 # Ignore .DS_store file
 .DS_Store
 
-# Ignore Sublime Text Project file
+# Ignore Sublime Text and Codekit Project file
 christopherjanzen.sublime-project
 christopherjanzen.sublime-workspace
+config.codekit
 
 CNAME
