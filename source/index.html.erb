@@ -3,16 +3,21 @@ title: Christopher Janzen Winnipeg freelance web designer
 ---
 
 <section class="intro">
-	<div class="brand-text">
-		<% link_to 'http://www.christopherjanzen.com', :id => 'logo' do %>
-	  		<%= image_tag 'logo.svg' %>
-		<% end %>
-		<h1 id="brand">Christopher Janzen</h1>
-		<h2 id="tagline">Winnipeg-based freelance web designer</h2>
-		<a href="#contact" class="big-link">Contact</a>
-	</div>
-	<%= image_tag 'profile_opt.jpg', :id => 'profile' %>
+  <div class="box">
+    <div class="brand">
+      <div class="brand-logo">
+    		<% link_to 'http://www.christopherjanzen.com', :id => 'logo' do %>
+    	  		<%= image_tag 'christopher-janzen-logo.svg' %>
+    		<% end %>
+    		<h1 id="name">Christopher Janzen</h1>
+      </div>
+    		<h2 id="tagline">Winnipeg-based freelance web designer</h2>
+    		<a href="#contact" class="big-link" id="contact-button">Contact</a>
+  	</div>
+  </div>
+	<%= image_tag 'profile_optimized.jpg', :id => 'profile' %>
 </section>
+
 <section class="recent-posts">
 	<div class="posts">
 		<h1><%= link_to 'Recent </br>Articles', 'blog/' %></h1>
@@ -31,6 +36,7 @@ title: Christopher Janzen Winnipeg freelance web designer
 	    <% end %>
 	</div>
 </section>
+
 <section class="contact">
 	<div class="contact-form">
 		<form id="contact" action="//formspree.io/chrisisaakjanzen@gmail.com" method="POST">

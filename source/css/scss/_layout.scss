@@ -12,7 +12,9 @@ body.index {
 	margin-top: 0;
 }
 
-.intro, .thankyou {
+@import 'homepage-intro';
+
+.thankyou {
 	@include clearfix;
 	@include pad(0 default);
 	clear: both;
@@ -31,72 +33,7 @@ body.index {
 		@include shift(1);
 	}
 }
-.brand-text {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	height: 600px;
-	height: 100vh;
-	width: 100%;
-	.big-link {
-		display: none;
-	}
-	@media only screen and (max-height: 20em) {
-		height: auto;
-		display: block;
-	}
-	@media only screen and (min-width: 40em) {
-		width: 50%;
-	}
-	@media only screen and (min-width: 40em) and (min-height: 30em) {
-		.big-link {
-			display: inline-block;
-			margin-top: 2em;
-		}
-	}
-	// @include media($large) {
-	// 	@include span-columns(4 of 10);
-	// 	@include shift(1);
-	// }
-	// @include media($xlarge) {
-	// 	@include span-columns(6 of 12);
-	// 	@include shift(1);
-	// }
-}
-#logo img {
-	width: 112px;
-	height: 112px;
-	width: 7rem;
-	height: 7rem;
-	margin: 1em 0 0em;
-	@media only screen and (max-height: 20em) {
-		width: 2.75rem;
-		height: 2.75rem;
-	}
-	@media only screen and (max-width: 40em) {
-		width: 2.75rem;
-		height: 2.75rem;
-	}
-}
-#brand {
-	margin: 1em 0 0;
-}
-#profile {
-	display: none;
-	max-width: 65%;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	z-index: -1;
-	width: 720px;
-	@media only screen and (min-width: 40em) {
-		@media only screen and (max-height: 20em) {
-			display: none;
-		}
-		display: block;
-	}
-}
+
 
 // Home page Recent Posts Layout
 .recent-posts {
