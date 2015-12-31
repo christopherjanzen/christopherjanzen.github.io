@@ -1,0 +1,114 @@
+.intro {
+  position: relative;
+  // display: flex;
+	@media only screen and (min-height: 20em) {
+		height: 100vh;
+	}
+}
+
+.box {
+	@include clearfix;
+	@include pad(0 default);
+	clear: both;
+	// margin: 0 auto;
+	height: 100vh;
+	@media only screen and (max-height: 20em) {
+		height: auto;
+	}
+  @include media($medium) {
+    @media only screen and (min-height: 48em) {
+      @include span-columns(4 of 6);
+      @include shift(1);
+      @include pad(0);
+    }
+  }
+	@include media($large) {
+		@include span-columns(8 of 10);
+		@include shift(1);
+		@include pad(0);
+	}
+	@include media($xlarge) {
+		@include span-columns(10 of 12);
+		@include shift(1);
+	}
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media only screen and (min-height: 20em) {
+    height: 100vh;
+  }
+  @include media($small) {
+    max-width: 85%;
+  }
+  @media only screen and (min-width: 40em){
+    max-width: 60%;
+  }
+  @include media($medium) {
+    max-width: 65%;
+  }
+  @include media($large) {
+    max-width: 50%;
+  }
+}
+
+#logo {
+  display: inline-block;
+  margin: 0 0 modular-scale(0);
+  padding: modular-scale(0) 0 0;
+}
+
+#logo img {
+	width: 112px;
+	height: 112px;
+	width: 7rem;
+	height: 7rem;
+	@media only screen and (max-height: 30em) {
+		width: 2.75rem;
+		height: 2.75rem;
+	}
+	@media only screen and (max-width: 45em) {
+		width: 2.75rem;
+		height: 2.75rem;
+	}
+}
+
+#name {
+  margin: 0 0 modular-scale(0);
+}
+
+#tagline {
+  margin: 0 0 modular-scale(0);
+}
+
+#contact-button {
+  display: none;
+  align-self: flex-start;
+  margin: 0 0 modular-scale(0);
+  @media only screen and (min-height: 24em) {
+    @media only screen and (min-width: 20em) {
+      display: inline-block;
+    }
+  }
+}
+
+#profile {
+  display: none;
+  position: absolute;
+  max-width: 65%;
+  @include media ($large) {
+    max-width: 75%;
+  }
+  max-height: 100vh;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  @media only screen and (min-width: 40em) {
+    @media only screen and (max-height: 20em) {
+      display: none;
+    }
+    display: block;
+  }
+}
