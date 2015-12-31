@@ -23,6 +23,3 @@
 # Ignore images
 Images/
 image/
-
-# Ignore build directory
-build/
