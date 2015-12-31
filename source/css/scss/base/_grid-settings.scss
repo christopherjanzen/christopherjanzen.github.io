@@ -19,7 +19,7 @@ $medium: new-breakpoint(min-width $medium-screen 6);
 $large: new-breakpoint(min-width $large-screen 10);
 $xlarge: new-breakpoint(min-width $xlarge-screen 12);
 
-$visual-grid: true !global;
+// $visual-grid: true !global;
 $visual-grid-color: #FF4D72 !global;
 $visual-grid-opacity: 0.3 !global;
 $visual-grid-index: front !global;
