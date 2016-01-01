@@ -112,3 +112,38 @@
     display: block;
   }
 }
+
+//Animation Stuff
+.cssanimations {
+  .brand {
+    opacity: 0;
+    animation: fadeIn ease-in-out 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1.5s;
+    animation-delay: 0.5s;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  }
+  #logo, #name {
+    animation: fadeDown ease-in-out 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+    animation-delay: 0.25s;
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+  #tagline, #contact-button {
+    animation: fadeUp ease-in-out 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+    animation-delay: 0.25s;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+}

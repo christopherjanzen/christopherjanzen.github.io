@@ -51,11 +51,11 @@ end
 
 # Set Markdown Engine and add Syntax Highlighting
 require 'redcarpet'
-set :markdown_engine, :redcarpet 
+set :markdown_engine, :redcarpet
 set :markdown, :layout_engine => :erb
-set :markdown, 
-	:fenced_code_blocks => true , 
-	:smartypants => true , 
+set :markdown,
+	:fenced_code_blocks => true ,
+	:smartypants => true ,
 	:autolink => true
 #activate :syntax, css_class: 'language'#, line_numbers: true
 #See more at: http://oscarfunes.com/2013/04/11/middleman-pt2/#sthash.cY3f6ofl.dpuf
@@ -116,6 +116,7 @@ activate :autoprefixer
 #Reload the browser automatically whenever files change
 configure :development do
 	activate :livereload do |livereload|
+      #https://forum.middlemanapp.com/t/howto-livereload-on-mobiles-tablets/1244
 			livereload.host = Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.ip_address
 	end
 end
@@ -136,7 +137,7 @@ configure :build do
   	require 'uglifier'
   	activate :minify_javascript
   	set :js_compressor, Uglifier.new(:comments => :none)
-  	
+
   # Enable cache buster
   # activate :asset_hash
 
