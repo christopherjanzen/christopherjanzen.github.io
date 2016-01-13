@@ -37,6 +37,8 @@ body.index {
 
 // Home page Recent Posts Layout
 .recent-posts {
+  position: relative;
+  z-index: 2;
 	background-color: #ECF0F1;
 	@include clearfix;
 	@include pad(modular-scale(3) default);
@@ -70,6 +72,7 @@ body.index {
 
 .contact {
 	@include span-columns(4);
+  background-color: white;
 }
 .contact-form {
 	// background-color: #ECF0F1;
@@ -81,7 +84,7 @@ body.index {
 	// h3 {
 	// 	align-self: center;
 	// }
-	@media only screen and (min-height: 35em) {
+	@media only screen and (min-height: 40em) {
 		height: 100vh;
 	}
 }

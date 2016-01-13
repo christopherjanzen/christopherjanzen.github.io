@@ -14,11 +14,50 @@ title: Christopher Janzen Winnipeg freelance web designer
     		<h2 id="tagline">Winnipeg-based freelance web designer</h2>
     		<a href="#contact" class="big-link" id="contact-button">Contact</a>
   	</div>
+  <!-- </div>
+  <div id="backgroundImage">
   </div>
 	<%= image_tag 'profile_optimized.jpg', :id => 'profile' %>
+  <div id="introductions">
+    <p>
+      A little brief blurb about who I am, what I do, and why you'd love to work with me.
+      This part should scroll up and then my most recent projects will come into view.
+    </p>
+    <a href="#recent-posts" class="big-link">Recent Projects</a>
+  </div> -->
 </section>
 
-<section class="recent-posts">
+<section class="photoAndBlurb">
+  <div id="backgroundImage">
+  </div>
+
+  <div id="introductions">
+    <h1>Hi there</h1>
+    <p>
+      I'm a web designer who creates custom websites for small businesses to grow and build their online presence.
+    </p>
+    <p>
+      Each website is handcrafted to ensure business goals are met while remaining performant and accessible on various devices and platforms.
+    </p>
+    <p>
+      Read more in <a href="#recent-posts">my blog</a> or checkout some <a target="_blank" href="http://www.behance.net/christopherjanzen">recent projects</a>.
+    </p>
+    <!-- I design and develop websites that help push businesses forward.
+    <br/>
+    Each website is handcrafted to ensure business goals are met while remaining performant and accessible on various devices and platforms. -->
+    <!-- I help businesses design and develop websites that push their goals forward.
+    <br/>
+    Each website is handcrafted to ensure these goals are met while remaining performant and accessible on various devices and platforms. -->
+    <!-- I'm a web designer who creates custom websites for small businesses to grow and build their online presence.
+    <br/>
+    Each website is handcrafted to ensure these goals are met while remaining performant and accessible on various devices and platforms. -->
+    <!-- Each project is handcrafted to ensure you're meeting your audience  -->
+    <%# TODO: Focus on benefits over features. What is the outcome of the features I provide. %>
+    <!-- <a href="#recent-posts" class="big-link">Recent Projects</a> -->
+  </div>
+</section>
+
+<section class="recent-posts" id="recent-posts">
 	<div class="posts">
 		<h1><%= link_to 'Recent </br>Articles', 'blog/' %></h1>
 		<% blog.articles[0...3].each do |article| %>

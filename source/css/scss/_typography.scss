@@ -30,7 +30,7 @@ h1 {
 		color: inherit;
 	}
 }
-.article-listing h1, .recent-posts h1, .contact-form h1 {
+#introductions h1, .article-listing h1, .recent-posts h1, .contact-form h1 {
 	text-align: left;
 	@include media($large) {
 		font-size: modular-scale(6);
@@ -150,6 +150,11 @@ p a, li a {
 p a:visited, li a:visited {
 	color: #564D65;
 }
+
+#introductions p {
+  font-size: modular-scale(2);
+}
+
 code {
 	font-family: 'Input Mono', 'monaco', 'Andale Mono', monospace;
 }

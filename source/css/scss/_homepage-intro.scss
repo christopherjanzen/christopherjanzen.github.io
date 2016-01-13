@@ -1,6 +1,12 @@
 .intro {
-  position: relative;
+  // position: relative;
   // display: flex;
+  @media only screen and (max-height: 30em) {
+    background-color: rgba(256, 256, 256, .75);
+  }
+  @media only screen and (max-width: 45em) {
+    background-color: rgba(256, 256, 256, .75);
+  }
 	@media only screen and (min-height: 20em) {
 		height: 100vh;
 	}
@@ -15,21 +21,22 @@
 	@media only screen and (max-height: 20em) {
 		height: auto;
 	}
-  @include media($medium) {
-    @media only screen and (min-height: 48em) {
-      @include span-columns(4 of 6);
-      @include shift(1);
-      @include pad(0);
+  @media only screen and (min-height: 30em) {
+    @include media($medium) {
+      @include span-columns(3 of 6);
+      // @include shift(1);
+      @include pad(0 default);
     }
   }
 	@include media($large) {
-		@include span-columns(8 of 10);
-		@include shift(1);
-		@include pad(0);
+		@include span-columns(5 of 10);
+		// @include shift(1);
+		@include pad(0 default);
 	}
 	@include media($xlarge) {
-		@include span-columns(10 of 12);
+		@include span-columns(4 of 12);
 		@include shift(1);
+    @include pad(0);
 	}
 }
 
@@ -40,18 +47,18 @@
   @media only screen and (min-height: 20em) {
     height: 100vh;
   }
-  @include media($small) {
-    max-width: 85%;
-  }
-  @media only screen and (min-width: 40em){
-    max-width: 60%;
-  }
-  @include media($medium) {
-    max-width: 65%;
-  }
-  @include media($large) {
-    max-width: 50%;
-  }
+  // @include media($small) {
+  //   max-width: 85%;
+  // }
+  // @media only screen and (min-width: 40em){
+  //   max-width: 60%;
+  // }
+  // @include media($medium) {
+  //   max-width: 65%;
+  // }
+  // @include media($large) {
+  //   max-width: 50%;
+  // }
 }
 
 #logo {
@@ -96,7 +103,7 @@
 
 #profile {
   display: none;
-  position: absolute;
+  position: fixed;
   max-width: 65%;
   @include media ($large) {
     max-width: 75%;
@@ -111,6 +118,70 @@
     }
     display: block;
   }
+}
+
+.photoAndBlurb {
+  position: relative;
+}
+
+#backgroundImage {
+  position: fixed;
+  top: 0;
+  background-image: url(../images/christopher-janzen.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  @media only screen and (min-height: 30em) {
+    @include media($medium) {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100vh;
+      z-index: -1;
+    }
+  }
+}
+
+#introductions {
+  background-color: rgba(256, 256, 256, .75);
+  // position: absolute;
+  // top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: auto;
+  @include clearfix;
+	@include pad(0 default);
+  padding-top: modular-scale(1);
+  padding-bottom: modular-scale(1);
+	clear: both;
+	@media only screen and (min-height: 40em) {
+    height: 100vh;
+	}
+  @media only screen and (min-height: 30em) {
+    @include media($medium) {
+      position: static;
+      height: auto;
+      margin: 20vh auto 50vh;
+      @include span-columns(3 of 6);
+      // @include shift(1);
+      @include pad(0 default);
+    }
+  }
+	@include media($large) {
+    @include span-columns(5 of 10);
+		// @include shift(1);
+		@include pad(0 default);
+	}
+	@include media($xlarge) {
+    @include span-columns(4 of 12);
+		@include shift(1);
+    @include pad(0);
+	}
 }
 
 //Animation Stuff
