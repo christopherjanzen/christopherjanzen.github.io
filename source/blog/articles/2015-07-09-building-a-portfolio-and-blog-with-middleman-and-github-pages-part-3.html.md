@@ -12,9 +12,9 @@ In my next article in this series we'll go over getting our project onto Github 
 
 If you've been following along with [this series](http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/) you'll now have the necessary tools required to start with Middleman and Github. Unless you're fairly comfortable in a Ruby environment, or if you haven't read the first article, I recommend going back to follow the steps found there.
 
-Before we begin I encourage you to check out the following resources:
+Before we begin I encourage you to check out the following resources: 
 [Middleman Docs]        (https://middlemanapp.com/basics/install/) are helpful to get a better understanding of how all the pieces fit together.
-This page on "[Github Pages](https://pages.github.com)" provides some great instructions on getting your site onto the web.
+This page on "[Github Pages](https://pages.github.com)" provides some great instructions on getting your site onto the web. 
 Lastly, [this article on free-static sites](http://www.sitepoint.com/free-static-sites-middleman-github/) fleshes out some of the ideas presented here.
 
 ## Installing Middleman
@@ -38,13 +38,13 @@ $ middleman init your_project_name
 Of course you'll want to replace 'your_project_name' with the name you'd like to give your project. Again, this means for me that my project would be called `christopherjanzen.github.io`. Optionally, if you'd like your site to primarily be a blog, you can install Middleman-Blog and add `--template=blog` to the end of the last command. This will create a different structure but will provide you with a better configuration up front. It's okay if you choose to skip this step, because I'll be explaining later how to add a blog in a sub-directory.
 
 ## Customization
-Once you've initialized your new project a few files will be automatically created for you. The most important to begin with are the config.rb and gemfile files.
+Once you've initialized your new project a few files will be automatically created for you. The most important to begin with are the config.rb and gemfile files. 
 
 ### Gemfile
 We're going to be editing the gemfile so go ahead and open that in your preferred text editor. Here are a few extensions I recommend using:
 
 - [middleman-blog](https://github.com/middleman/middleman-blog) (used for creating a blog with Middleman)
-- [nokogiri](https://github.com/sparklemotion/nokogiri) (can be used for article summary truncation in blog)
+- [nokogiri](https://github.com/sparklemotion/nokogiri) (can be used for article summary truncation in blog) 
 - [redcarpet](https://github.com/vmg/redcarpet) (used to change markdown style especially if you'll be using code blocks)
 - [middleman-syntax](https://github.com/middleman/middleman-syntax) (can be used to provide syntax highlighting if you'll be using code blocks)
 - [middleman-autoprefixer](https://github.com/middleman/middleman-autoprefixer) (an extension that removes the need to provide vendor prefixes in your css)
@@ -85,6 +85,6 @@ Depending on where you want your blog and articles you will want to change their
 I won't go over every configuration setting in this post here but if you want to see my config file you can [check it out](https://github.com/christopherjanzen/christopherjanzen.github.io/blob/source/config.rb). It is important that certain configuration settings go in order, otherwise you'll end up with some issues. Most importantly make sure your blog settings come before `relative_links` and that `relative_links` comes before `directory_indexes`.
 
 ## Wrapping up
-Once you've figured out your config and gemfile we'll be ready to start building our templates. To recap, what we've done so far is prepared our machine for Ruby development, installed Middleman, created a project, and modified our config.rb and Gemfile. This sets us up nicely to start working on templates (how our site is displayed) which will be covered in the next article where I will cover how to push everything to Github, and customizing your site.
+Once you've figured out your config and gemfile we'll be ready to start building our templates. To recap, what we've done so far is prepared our machine for Ruby development, installed Middleman, created a project, and modified our config.rb and Gemfile. This sets us up nicely to start working on templates (how are site is displayed) which will be covered in the next article where I will cover how to push everything to Github, and customizing your site.
 
 As always, if you find any issues please feel free to send me any corrections through [Github](https://github.com/christopherjanzen/christopherjanzen.github.io), [email](http://www.christopherjanzen.com#contact) or [Twitter](http://www.twitter.com/cijanzen).
