@@ -1,10 +1,14 @@
 ---
-title: Building a Portfolio and Blog with Middleman and Github Pages - Part 2
+title: Building a Portfolio and Blog with Middleman and Github Pages - Part 3
 subtitle: Setting up Middleman and modifying the config.rb and Gemfile
-summary: Part 2 in a series of posts about getting set up with Middleman and Github Pages.
-description: Part 2 in a series of posts about getting set up with Middleman and Github Pages.
+summary: Part 3 in a series of posts about getting set up with Middleman and Github Pages.
+description: Part 3 in a series of posts about getting set up with Middleman and Github Pages.
 category: Code
 ---
+
+##Quick recap:
+In the [first article](http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/) of this series I covered the steps necessary to start development with Ruby. The second article discussed initial setup of Middleman including extensions and the configuration file. We should now have a working local website when going to  
+
 
 In the [first article](http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/) of this series I provided the steps to get your machine ready for Ruby development; a necessary step before jumping into Middleman. This article will go over installing Middleman, choosing extensions to customize your site, and creating a configuration file to set this all up.
 
@@ -12,9 +16,9 @@ In my next article in this series we'll go over getting our project onto Github 
 
 If you've been following along with [this series](http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/) you'll now have the necessary tools required to start with Middleman and Github. Unless you're fairly comfortable in a Ruby environment, or if you haven't read the first article, I recommend going back to follow the steps found there.
 
-Before we begin I encourage you to check out the following resources: 
+Before we begin I encourage you to check out the following resources:
 [Middleman Docs]        (https://middlemanapp.com/basics/install/) are helpful to get a better understanding of how all the pieces fit together.
-This page on "[Github Pages](https://pages.github.com)" provides some great instructions on getting your site onto the web. 
+This page on "[Github Pages](https://pages.github.com)" provides some great instructions on getting your site onto the web.
 Lastly, [this article on free-static sites](http://www.sitepoint.com/free-static-sites-middleman-github/) fleshes out some of the ideas presented here.
 
 ## Installing Middleman
@@ -38,13 +42,13 @@ $ middleman init your_project_name
 Of course you'll want to replace 'your_project_name' with the name you'd like to give your project. Again, this means for me that my project would be called `christopherjanzen.github.io`. Optionally, if you'd like your site to primarily be a blog, you can install Middleman-Blog and add `--template=blog` to the end of the last command. This will create a different structure but will provide you with a better configuration up front. It's okay if you choose to skip this step, because I'll be explaining later how to add a blog in a sub-directory.
 
 ## Customization
-Once you've initialized your new project a few files will be automatically created for you. The most important to begin with are the config.rb and gemfile files. 
+Once you've initialized your new project a few files will be automatically created for you. The most important to begin with are the config.rb and gemfile files.
 
 ### Gemfile
 We're going to be editing the gemfile so go ahead and open that in your preferred text editor. Here are a few extensions I recommend using:
 
 - [middleman-blog](https://github.com/middleman/middleman-blog) (used for creating a blog with Middleman)
-- [nokogiri](https://github.com/sparklemotion/nokogiri) (can be used for article summary truncation in blog) 
+- [nokogiri](https://github.com/sparklemotion/nokogiri) (can be used for article summary truncation in blog)
 - [redcarpet](https://github.com/vmg/redcarpet) (used to change markdown style especially if you'll be using code blocks)
 - [middleman-syntax](https://github.com/middleman/middleman-syntax) (can be used to provide syntax highlighting if you'll be using code blocks)
 - [middleman-autoprefixer](https://github.com/middleman/middleman-autoprefixer) (an extension that removes the need to provide vendor prefixes in your css)
