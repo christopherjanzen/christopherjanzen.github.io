@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width">
+		<!-- Always force latest IE rendering engine or request Chrome Frame -->
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<title>Building a Portfolio and Blog with Middleman and Github Pages | Christopher Janzen</title>
+		<meta name="description" content="A primer on setting up the tools needed to use Middleman">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@cijanzen">
+		<meta name="twitter:creator" content="@cijanzen">
+		<meta property="og:url" content="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/">
+		<meta property="og:title" content="Building a Portfolio and Blog with Middleman and Github Pages">
+		<meta property="og:description" content="A primer on setting up the tools needed to use Middleman">
+		<meta property="og:image" content="http://www.christopherjanzen.com/images/github-middleman.jpg">
+		<link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="../../js/all.js" async="true"></script>
+		<!-- Typekit Script -->
+		<script>
+			(function(d) {
+				var config = {
+					kitId: 'tec1mtr',
+					scriptTimeout: 3000
+				},
+				h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+			})(document);
+		</script>
+	</head>
+	<body class="blog blog_building-a-portfolio-and-blog-with-middleman-and-github-pages blog_building-a-portfolio-and-blog-with-middleman-and-github-pages_index">
+		<header class="nav">
+<a id="nav-logo" href="http://www.christopherjanzen.com">				<img src="../../images/christopher-janzen-logo.svg" />
+</a>			<ul>
+				<li><a href="http://www.christopherjanzen.com/blog/">Blog</a></li>
+				<li><a href="http://www.christopherjanzen.com#contact">Contact</a></li>
+			</ul>
+		</header>
+		<div id="main" role="main">
+        <div class="header-image">
+				<img id="header-image" src="../../images/github-middleman.jpg" />
+        </div>
+
+	<article>
+		<h1>Building a Portfolio and Blog with Middleman and Github Pages</h1>
+			<p class="subtitle">A primer on setting up the tools needed to use Middleman</p>
+		<p>Over a series of posts I hope to describe my journey through setting up this website using Middleman on Github. I found a lot of resources but many of them were outdated (mine will be soon enough as well but please contact me so I can update it if you notice anything no longer works) and vague about how to get things working. I like to think I have a good grasp on finding the resources I need to get going but there were a few rough patches that eventually led to eureka moments that I&rsquo;d like to cover through these posts.</p>
+
+<p>This first post is going to cover what we need before we should even begin to work with Middleman itself.</p>
+
+<h2>Why choose Middleman?</h2>
+
+<p>After realizing that I just needed a simple (hah, thats relative) tool to allow me to build a portfolio website with a blog I began digging around for something that would be lighter than Wordpress. Wordpress is great but it can weigh you down if you don&rsquo;t tame it. I didn&rsquo;t want to have to fight a system in order to do what I wanted, plus I wanted to learn something new (and boy, did I ever).</p>
+
+<p>Jekyll, another static site generator, just didn&rsquo;t seem to quite align with what I was looking for. Honestly I don&rsquo;t even remember the reasons why right now, but that&rsquo;s when I stumbled upon Middleman.</p>
+
+<p>Middleman and Jekyll both offer pretty much the same thing: A simple static website generator with a great community and lots of extensions to help you get stuff done quicker.
+The real kicker is that because we&rsquo;re using static html, css, and javascript we can get away with very little hosting resources. In fact, we can host our sites for free using Github Pages. </p>
+
+<p>In the next few articles I&rsquo;ll go over getting everything set up and hosted on Github, but for now we&rsquo;ll start at the beginning.</p>
+
+<h2>Getting The Apps</h2>
+
+<p>Let&rsquo;s start with what you&rsquo;ll need before we can get anywhere at all. 
+I developed my site on a Mac running OS X 10.10 but this would apply to a few older generations as well I&rsquo;m sure.
+First thing we need is a text editor and terminal or similar (I used <a href="http://www.sublimetext.com">Sublime Text 3</a> and <a href="https://www.iterm2.com">iTerm</a> respectively).
+You&rsquo;ll be using terminal for installing a number of tools and making sure they are up to date. The text editor is for writing your code of course (One day I&rsquo;ll write a post on my Sublime Text 3 setup). 
+At this point if you have a minimal understanding of how Terminal works you might be concerned, but I had never dealt with Terminal prior to this so as the adage goes, “If I can do it, you can do it too”. I am assuming familiarity with HTML and CSS (that won’t come up in this article). Knowledge of Ruby and Markdown would probably help (I wouldn’t know, I had zero knowledge at the time of starting) but not necessary if you&rsquo;re keeping things simple. 
+These are actually the only apps we need to get started!</p>
+
+<h2>Installing The Tools</h2>
+
+<p>Without prior knowledge in the area of installing things through the command line, I found it difficult to find resources that broke down the process so hopefully this helps you get started properly. </p>
+
+<p><em>Note: If you have access to a Treehouse membership there&rsquo;s a great workshop video on getting command line tools, Homebrew, and Ruby (running through RBenv) installed on your system <a href="https://teamtreehouse.com/library/installing-a-ruby-on-rails-development-environment-in-os-x">here</a></em></p>
+
+<h3>Command Line Tools</h3>
+
+<p>First things first we are going to install Command Line Tools
+<a href="http://railsapps.github.io/xcode-command-line-tools.html">Here’s a great article</a> on how to do just that.
+The reason we are downloading these tools is to gain access to commonly used tools like git.
+The big take away from the article (ie. how to do it) is to open Terminal and type this command:</p>
+
+<pre><code class="language-bash">
+$ xcode-select --install
+</code></pre>
+
+<p>Note: Don’t type the $ sign. This is just an indication that you should be writing the following text into your command prompt. You should also be pressing <code>return</code> after typing each line of code.
+Notice that you don’t need to install Xcode before installing the Command Line Tools. If you aren’t going to be doing development for Apple based Operating Systems then skip this cause its a large and lengthy app install.</p>
+
+<p>Okay, so we should now have Command Line Tools installed. you can confirm by typing this:</p>
+
+<pre><code class="language-bash">$ xcode-select -p
+</code></pre>
+
+<p>This will reveal the path to the installed location of the tools.</p>
+
+<h3>Setting up Homebrew</h3>
+
+<p>Next up we’ll be installing something called Homebrew which is described as “Homebrew installs the stuff you need that Apple didn’t”. Essentially this is a package manager that will make it much easier to install &ldquo;stuff&rdquo; like rbenv (we’ll use this to install Ruby), keep that &ldquo;stuff&rdquo; up to date, and in an organized location so everything is easy to find.
+Find out more at: <a href="http://www.brew.sh">brew.sh</a> if you are interested in learning more. Otherwise copy the following into your prompt:</p>
+
+<pre><code class="language-bash">$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<p>This will install Homebrew on your system. It’s a good practice to make sure everything is up to date and working by running:</p>
+
+<pre><code class="language-bash">$ brew update
+$ brew doctor
+</code></pre>
+
+<p>Cool, You should now have Homebrew installed on your system. Emoticons of beer (Homebrew, get it?)&hellip;</p>
+
+<h3>Installing Rbenv</h3>
+
+<p>Okay, so now that we’ve installed Homebrew we are going to use it to install rbenv which will then allow us to install Ruby. 
+<a href="https://github.com/sstephenson/rbenv">Rbenv</a> is a version manager that allows you to use different versions of Ruby for different projects. If we’re doing simple stuff like installing Middleman this won’t matter too much but it’s an easy way to get up and running. 
+Rbenv is only one of many version managers available. You could also checkout RVM if you want something that some consider more robust and with a larger support community. Each version manager has its own pros and cons which won’t be discussed here, but if you are interested, <a href="http://albertogrespan.com/blog/installing-ruby-the-right-way-on-os-x-using-rbenv/">these</a> are a few <a href="https://robots.thoughtbot.com/using-rbenv-to-manage-rubies-and-gems">articles</a> which discuss them.
+Enough background history, let’s actually do something.
+To start we are going to install rbenv, ruby-build, rbenv-default-gems, rbenv-gem-rehash, and optionally rbenv-vars using this command:</p>
+
+<pre><code class="language-bash">$ brew install rbenv ruby-build rbenv-default-gems rbenv-gem-rehash rbenv-vars
+</code></pre>
+
+<p><a href="https://github.com/sstephenson/ruby-build">Ruby-build</a> is a “plugin that provides an rbenv install command to compile and install different versions of Ruby on UNIX-like systems.”</p>
+
+<p><a href="https://github.com/sstephenson/rbenv-default-gems">Rbenv-default-gems</a> is a plugin that “hooks into the rbenv install command to automatically install gems every time you install a new version of Ruby.”</p>
+
+<p><a href="https://github.com/sstephenson/rbenv-gem-rehash">Rbenv-gem-rehash</a> is a plugin that “automatically runs rbenv rehash every time you install or uninstall a gem.” Essentially it’s a quick time saver.</p>
+
+<p><a href="https://github.com/sstephenson/rbenv-vars">Rbenv-vars</a> is a “plugin for rbenv that lets you set global and project-specific environment variables before spawning Ruby processes.”
+This will go ahead and install everything in one fell swoop.
+Now we have to add a file so that rbenv can run when we launch Terminal. Towards the top of our install log will be a line that says:</p>
+
+<pre><code class="language-bash">if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi
+</code></pre>
+
+<p>We’re going to copy that and then, at our prompt, type:</p>
+
+<pre><code class="language-bash">$ echo &#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39; &gt; ~/.profile
+</code></pre>
+
+<p>The &rsquo;.profile&rsquo; file is opened along with Terminal every time and initializes rbenv.
+If you don’t want documentation to be installed every time you install gems (documentation takes longer to install) then you’ll also want to type:</p>
+
+<pre><code class="language-bash">$ echo &#39;gem: --no-document&#39; &gt; ~/.gemrc
+</code></pre>
+
+<p>You can then type: <code>$ exit</code> and the process will be completed! this will close the Terminal window and you should now open a new one.</p>
+
+<h3>Installing Ruby</h3>
+
+<p>We’ll finally be installing ruby. At this time the most current version is 2.2.2 but you can always check at <a href="http://www.ruby-lang.org">ruby-lang.org</a> or by typing <code>$ rbenv install --list</code>.</p>
+
+<p>Type:</p>
+
+<pre><code class="language-bash">$ rbenv install 2.2.2
+</code></pre>
+
+<p>We’re now going to tell rbenv to use this version of Ruby by typing: </p>
+
+<pre><code class="language-bash">$ rbenv global 2.2.2
+$ rbenv rehash
+</code></pre>
+
+<p>You should now be able to type: </p>
+
+<pre><code class="language-bash">$ ruby -v 
+</code></pre>
+
+<p>and see that the latest version is being used.
+As mentioned in the treehouse video, a few other tools you might want to install are wget, curl, and imagemagick.
+Type: </p>
+
+<pre><code class="language-bash">$ brew install wget curl imagemagick
+</code></pre>
+
+<p>We’ll also want to update to the latest version of Rubygems by typing: </p>
+
+<pre><code class="language-bash">$ gem update --system
+</code></pre>
+
+<h3>Installing Bundler</h3>
+
+<p>We are now going to install a Ruby gem called <a href="http://bundler.io">Bundler</a> which allows us to install and manage gems that we’ll be using in our apps like Middleman.
+Type: </p>
+
+<pre><code class="language-bash">$ gem install bundler
+</code></pre>
+
+<p>Lastly, we’ll install a plugin that makes for less work when we install gems. <a href="https://github.com/carsomyr/rbenv-bundler">Rbenv-bundler</a> “saves you from the hassle of having to type bundle exec when working with per-project gem sets and will enable <code>rbenv which</code> to report Bundler-installed gem executables if available.”</p>
+
+<p>Type: </p>
+
+<pre><code class="language-bash">$ brew install rbenv-bundler
+</code></pre>
+
+<p>Okay! We are finally done installing the tools necessary to get started with Middleman. It seems like a lot of work just to get up and running but this will make everything else go a lot smoother down the road. There are definitely other gems, plugins, etc. that can make our lives even easier but these are just a few I’ve discovered from different articles.
+Please let me know if you discover any errors here and if you have an suggestions for more useful tools on Twitter <a href="https://twitter.com/cijanzen">@cijanzen</a>.</p>
+
+<p>In the next article we’ll actually be installing Middleman and running it on a local server. Go take a break and give yourself a high-five because you just got through the worst of it (I felt like cracking open as many beers as I saw emoticons during this process)!</p>
+
+	</article>
+</div>
+<!-- <aside>
+	  <h2>Recent Articles</h2>
+	  <ol>
+		  <li><a href="../building-a-portfolio-and-blog-with-middleman-and-github-pages-part-3/">Building a Portfolio and Blog with Middleman and Github Pages - Part 3</a> <span>Mar 13</span></li>
+		  <li><a href="../eulogy-for-rdio/">Eulogy for Rdio</a> <span>Nov 24</span></li>
+		  <li><a href="../building-a-portfolio-and-blog-with-middleman-and-github-pages-part-2/">Building a Portfolio and Blog with Middleman and Github Pages - Part 2</a> <span>Jul  9</span></li>
+		  <li><a href="../starting-is-hard/">Starting is Hard</a> <span>Jun 28</span></li>
+		  <li><a href="./">Building a Portfolio and Blog with Middleman and Github Pages</a> <span>Jun 16</span></li>
+	  </ol>
+
+	  <h2>Tags</h2>
+	  <ol>
+	  </ol>
+
+	  <h2>By Year</h2>
+	  <ol>
+		  <li><a href="/blog/2016/">2016 (1)</a></li>
+		  <li><a href="/blog/2015/">2015 (4)</a></li>
+	  </ol>
+</aside> -->
+	<script src="/js/prism.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-62698110-1', 'auto');
+		ga('require', 'linkid', 'linkid.js');
+		ga('send', 'pageview');
+	</script>
+  </body>
+</html>

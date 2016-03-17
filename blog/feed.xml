@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Christopher Janzen</title>
+  <id>http://www.christopherjanzen.com/blog/</id>
+  <link href="http://www.christopherjanzen.com/blog/"/>
+  <link href="http://www.christopherjanzen.com/blog/feed.xml" rel="self"/>
+  <updated>2016-03-13T00:00:00-06:00</updated>
+  <author>
+    <name>Christopher Janzen</name>
+  </author>
+  <icon>/images/logo.jpg</icon>
+  <entry>
+    <title>Building a Portfolio and Blog with Middleman and Github Pages - Part 3</title>
+    <link rel="alternate" href="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages-part-3/"/>
+    <id>http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages-part-3/</id>
+    <published>2016-03-13T00:00:00-06:00</published>
+    <updated>2016-03-16T20:16:55-05:00</updated>
+    <author>
+      <name>Christopher Janzen</name>
+    </author>
+    <content type="html">&lt;h2&gt;Quick recap:&lt;/h2&gt;
+
+&lt;p&gt;In the &lt;a href="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/"&gt;first article&lt;/a&gt; of this series I covered the steps necessary to start development with Ruby. The second article discussed initial setup of Middleman including extensions and the configuration file. We should now have a working local website. If you are in your middleman directory you can run &lt;code&gt;middleman s&lt;/code&gt; to start the middleman server and &lt;code&gt;⌃c&lt;/code&gt; to stop it. If you visit &lt;a href="http://localhost:4567/"&gt;http://localhost:4567/&lt;/a&gt; the site should load at your home page. If this is not the case for you then you should go through parts one and two again and double check the &lt;a href="https://middlemanapp.com/basics/install/"&gt;Middleman docs&lt;/a&gt; to make sure you didn&amp;rsquo;t miss anything. This article will discuss setting up Git and pushing your project to Github so that you can start tracking changes and make your site live.&lt;/p&gt;
+
+&lt;h2&gt;Setting up Git&lt;/h2&gt;
+
+&lt;p&gt;At this point we&amp;rsquo;re ready to start tracking our changes using Git. If you&amp;rsquo;re planning to host your site on Github it&amp;rsquo;s important that we set things up correctly so that we can push our working directory and have &lt;em&gt;Middleman Deploy&lt;/em&gt; actually build our site and put it in the right place for our site to show up. At the time, I wasn&amp;rsquo;t familiar with Git and how it works. I still find it baffling but I do know it&amp;rsquo;s saved my butt a few times when I accidentally ran the wrong command and overwrote a bunch of work. Here are some resources I recommend if you&amp;rsquo;re new to Git:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://abookapart.com/products/git-for-humans"&gt;Git for Humans&lt;/a&gt; gives a good overview of Git and presents some best practices.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.git-tower.com/learn/git/ebook/command-line/basics/what-is-version-control"&gt;Learn Version Control with Git&lt;/a&gt; goes more in-depth while still taking you through the basics.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://git-scm.com/book/"&gt;Pro Git&lt;/a&gt;. Straight from the horses mouth, this book also takes you from 0 to pro. Also be sure to checkout the documentation throughout the rest of the site.&lt;/p&gt;
+
+&lt;p&gt;Our first step is to initialize Git in our project folder and make our first &lt;em&gt;commit&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;
+$ git init
+$ git checkout -b source
+$ git add .
+$ git commit -m'initial commit'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There&amp;rsquo;s lots going on here but we are simply starting a new Git project within our Middleman directory, creating a new branch to work on called &amp;lsquo;source&amp;rsquo;, adding everything to Git, and then committing it.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using any other build tools you may also want to consider creating a &amp;rsquo;.gitignore&amp;rsquo; file and adding any directories or files that shouldn&amp;rsquo;t be tracked by Git.&lt;/p&gt;
+
+&lt;p&gt;One important side step is to create a &lt;em&gt;.nojekyll&lt;/em&gt; file. This will tell Github not to treat our site like a Jekyll static site. You can do this however you&amp;rsquo;d like but since we&amp;rsquo;re probably in Terminal you can type: &lt;code&gt;$ touch .nojekyll&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Setting up Github&lt;/h2&gt;
+
+&lt;p&gt;We now need to go to our Github account and setup a new repository. It&amp;rsquo;s really important that we use this format: &lt;code&gt;username.github.io&lt;/code&gt;. It should, if directions were followed, be the same name as our folder for our Middleman project. So my repository name is &lt;code&gt;christopherjanzen.github.io&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Putting it all together&lt;/h2&gt;
+
+&lt;p&gt;So, we&amp;rsquo;ve started Git on our end and created a repository on Github, now it&amp;rsquo;s time to make them talk.&lt;/p&gt;
+
+&lt;p&gt;First we setup our Github repository as the remote:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;
+$ git remote add git@github.com:username/username.github.io.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Replace &lt;em&gt;username&lt;/em&gt; with your Github username in the above command and then run this command to push our work up to Github:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;
+$ git push -u origin source
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Deploying to Github User Page&lt;/h2&gt;
+
+&lt;p&gt;If you haven&amp;rsquo;t already installed Middleman Deploy now is the time to do so. In your Gemfile add this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;
+gem 'middleman-deploy', '~&gt; 1.0'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Back in your terminal run the &lt;code&gt;$ bundle install&lt;/code&gt; command. Middleman Deploy should now be installed and we can configure it in our config.rb by adding these lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-ruby"&gt;
+# Middleman Deploy
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.branch = 'master'
+  deploy.build_before = true
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Okay! If everything went well we should be ready to deploy our site. In your terminal run &lt;code&gt;$ middleman deploy&lt;/code&gt;. You may be prompted for Github credentials but your site should be ready in a moment. Go ahead and visit &lt;em&gt;username&lt;/em&gt;.github.io and be sure to replace &lt;em&gt;username&lt;/em&gt; with your own.&lt;/p&gt;
+
+&lt;h2&gt;Wrap up&lt;/h2&gt;
+
+&lt;p&gt;As always, if you find any issues please feel free to send me any corrections through &lt;a href="https://github.com/christopherjanzen/christopherjanzen.github.io"&gt;Github&lt;/a&gt;, &lt;a href="http://www.christopherjanzen.com#contact"&gt;email&lt;/a&gt; or &lt;a href="http://www.twitter.com/cijanzen"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Eulogy for Rdio</title>
+    <link rel="alternate" href="http://www.christopherjanzen.com/blog/eulogy-for-rdio/"/>
+    <id>http://www.christopherjanzen.com/blog/eulogy-for-rdio/</id>
+    <published>2015-11-24T10:23:00-06:00</published>
+    <updated>2015-11-24T10:23:55-06:00</updated>
+    <author>
+      <name>Christopher Janzen</name>
+    </author>
+    <content type="html">&lt;p&gt;I&amp;rsquo;ve already stopped adding favourites. What&amp;rsquo;s the point? This is all going to be gone in a few weeks anyways.&lt;/p&gt;
+
+&lt;p&gt;I can&amp;rsquo;t remember the last time I felt so sad to see a service I&amp;rsquo;ve used depart from this world.&lt;/p&gt;
+
+&lt;p&gt;Your time was cut too short.&lt;/p&gt;
+
+&lt;p&gt;I will remember you for all the times we spent finding new music together because you had this awesome new releases section that highlighted everything and not just the top billboard music (yes, we still judged by the album artwork).&lt;/p&gt;
+
+&lt;p&gt;Yes, you had your brief adolescent years as your appearance changed inexplicably every day but in the end you turned into a charming little app that others looked up to.&lt;/p&gt;
+
+&lt;p&gt;Sometimes you&amp;rsquo;d say I could listen to some music and then the next day say it wasn&amp;rsquo;t available. But then you&amp;rsquo;d usually give it back to me although I&amp;rsquo;d have to re add it. I know it wasn&amp;rsquo;t your fault and that you had a rocky relationship with &lt;em&gt;&amp;lsquo;licensing agreements&amp;rsquo;&lt;/em&gt; that you just couldn&amp;rsquo;t get out of.&lt;/p&gt;
+
+&lt;p&gt;But in the end you were there for me no matter the mood, time, or location.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll remember all the times you kept playing great music even after the album I asked for finished and I didn&amp;rsquo;t even notice.&lt;/p&gt;
+
+&lt;p&gt;Thanks for always being mindful of my data usage by giving me bitrate options so I didn&amp;rsquo;t have to wait or worry about going over my limit.&lt;/p&gt;
+
+&lt;p&gt;Just like our bodies decay when we die and then allow new things to grow, I hope the parts that Pandora bought off of you will evolve into something new and beautiful.&lt;/p&gt;
+
+&lt;p&gt;For now I will fill this void with other lovers (Spotify, the ugly one) but your place in my heart will never disappear.&lt;/p&gt;
+
+&lt;p&gt;As you sail off into the sunset remember that I love you and I&amp;rsquo;ll miss you.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Building a Portfolio and Blog with Middleman and Github Pages - Part 2</title>
+    <link rel="alternate" href="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages-part-2/"/>
+    <id>http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages-part-2/</id>
+    <published>2015-07-09T00:00:00-05:00</published>
+    <updated>2016-03-16T20:09:18-05:00</updated>
+    <author>
+      <name>Christopher Janzen</name>
+    </author>
+    <content type="html">&lt;p&gt;In the &lt;a href="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/"&gt;first article&lt;/a&gt; of this series I provided the steps to get your machine ready for Ruby development; a necessary step before jumping into Middleman. This article will go over installing Middleman, choosing extensions to customize your site, and creating a configuration file to set this all up.&lt;/p&gt;
+
+&lt;p&gt;In my next article in this series we&amp;rsquo;ll go over getting our project onto Github Pages, further customization, and templating.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve been following along with &lt;a href="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/"&gt;this series&lt;/a&gt; you&amp;rsquo;ll now have the necessary tools required to start with Middleman and Github. Unless you&amp;rsquo;re fairly comfortable in a Ruby environment, or if you haven&amp;rsquo;t read the first article, I recommend going back to follow the steps found there.&lt;/p&gt;
+
+&lt;p&gt;Before we begin I encourage you to check out the following resources:
+&lt;a href="https://middlemanapp.com/basics/install/"&gt;Middleman Docs&lt;/a&gt; are helpful to get a better understanding of how all the pieces fit together.
+This page on &amp;ldquo;&lt;a href="https://pages.github.com"&gt;Github Pages&lt;/a&gt;&amp;rdquo; provides some great instructions on getting your site onto the web.
+Lastly, &lt;a href="http://www.sitepoint.com/free-static-sites-middleman-github/"&gt;this article on free-static sites&lt;/a&gt; fleshes out some of the ideas presented here.&lt;/p&gt;
+
+&lt;h2&gt;Installing Middleman&lt;/h2&gt;
+
+&lt;p&gt;Your first step is to install Middleman and its dependencies on your machine. Go ahead and open terminal and type this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;
+$ gem install middleman
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This instruction will download Middleman and everything else it needs for you to start building your site. Optionally, you can install the middleman blog at this time by typing &lt;code&gt;$ gem install middleman-blog&lt;/code&gt; but I will be doing things a little differently.&lt;/p&gt;
+
+&lt;p&gt;Now that Middleman is installed we&amp;rsquo;ll start by making a directory for our site to live in. You can either open up Finder and create a folder or, while in the command prompt, you can use the &lt;code&gt;mkdir&lt;/code&gt; command to create your folder. Either way, if you plan to use Github Pages on a &amp;lsquo;user&amp;rsquo; site, you&amp;rsquo;ll want to name the folder after the url you&amp;rsquo;ll be using. To find out more about &amp;#39;user&amp;rsquo; pages checkout the &lt;a href="https://pages.github.com"&gt;Github Pages&lt;/a&gt; link I referenced earlier. Also, I am assuming you&amp;rsquo;ve already created a Github account, which should be very straightforward.&lt;/p&gt;
+
+&lt;h2&gt;Starting a Project&lt;/h2&gt;
+
+&lt;p&gt;If, for example, I want my Github repository to be christopherjanzen.github.io then that is what I will name my folder. You&amp;rsquo;ll replace the &amp;ldquo;christopherjanzen&amp;rdquo; part with your own github username. Once you&amp;rsquo;ve created your folder you&amp;rsquo;ll want to &amp;#39;cd&amp;rsquo; into it through the command prompt and type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;
+$ middleman init your_project_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course you&amp;rsquo;ll want to replace &amp;#39;your&lt;em&gt;project&lt;/em&gt;name&amp;rsquo; with the name you&amp;rsquo;d like to give your project. Again, this means for me that my project would be called &lt;code&gt;christopherjanzen.github.io&lt;/code&gt;. Optionally, if you&amp;rsquo;d like your site to primarily be a blog, you can install Middleman-Blog and add &lt;code&gt;--template=blog&lt;/code&gt; to the end of the last command. This will create a different structure but will provide you with a better configuration up front. It&amp;rsquo;s okay if you choose to skip this step, because I&amp;rsquo;ll be explaining later how to add a blog in a sub-directory.&lt;/p&gt;
+
+&lt;h2&gt;Customization&lt;/h2&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve initialized your new project a few files will be automatically created for you. The most important to begin with are the config.rb and gemfile files.&lt;/p&gt;
+
+&lt;h3&gt;Gemfile&lt;/h3&gt;
+
+&lt;p&gt;We&amp;rsquo;re going to be editing the gemfile so go ahead and open that in your preferred text editor. Here are a few extensions I recommend using:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/middleman/middleman-blog"&gt;middleman-blog&lt;/a&gt; (used for creating a blog with Middleman)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sparklemotion/nokogiri"&gt;nokogiri&lt;/a&gt; (can be used for article summary truncation in blog)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vmg/redcarpet"&gt;redcarpet&lt;/a&gt; (used to change markdown style especially if you&amp;rsquo;ll be using code blocks)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/middleman/middleman-syntax"&gt;middleman-syntax&lt;/a&gt; (can be used to provide syntax highlighting if you&amp;rsquo;ll be using code blocks)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/middleman/middleman-autoprefixer"&gt;middleman-autoprefixer&lt;/a&gt; (an extension that removes the need to provide vendor prefixes in your css)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/middleman-contrib/middleman-deploy"&gt;middleman-deploy&lt;/a&gt; (we&amp;rsquo;ll use this to push our local site to our Github repository)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Aupajo/middleman-search_engine_sitemap"&gt;middleman-search_engine_sitemap&lt;/a&gt; (helps create a sitemap that can be uploaded to search engines)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to get these extensions and install them you&amp;rsquo;ll want to add &lt;code&gt;gem &amp;quot;name_of_extension&amp;quot;&lt;/code&gt; to your gemfile. Save this and then, back at your command prompt, type &lt;code&gt;$ bundle install&lt;/code&gt;. This will fetch the required extensions and any dependencies. Next we&amp;rsquo;ll configure these extensions in our config file.&lt;/p&gt;
+
+&lt;h3&gt;Config.rb&lt;/h3&gt;
+
+&lt;p&gt;Open the config.rb file in your text editor. Depending on how you&amp;rsquo;ve followed along so far you&amp;rsquo;ll find a few settings already in place and a number of them are commented out. We&amp;rsquo;ll be changing some of them and adding our own.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s my blog configuration from my config.rb file:&lt;/p&gt;
+
+&lt;p&gt;&lt;pre&gt;&lt;code class="language-ruby"&gt;
+activate :blog do |blog|
+    blog.prefix = &amp;#39;blog&amp;#39;
+    blog.sources = &amp;#39;articles/{year}-{month}-{day}-{title}.html&amp;#39;
+    blog.permalink = &amp;#39;{title}&amp;#39;
+    blog.default&lt;em&gt;extension = &amp;#39;.markdown&amp;#39;
+    blog.layout = &amp;#39;/blog/blog&lt;/em&gt;layout&amp;#39;
+    blog.tag&lt;em&gt;template = &amp;#39;tag.html&amp;#39;
+    blog.calendar&lt;/em&gt;template = &amp;#39;calendar.html&amp;#39;
+    # Enable pagination
+    blog.paginate = true
+    blog.per&lt;em&gt;page = 10
+    blog.page&lt;/em&gt;link = &amp;#39;page/{num}.html&amp;#39;
+    blog.custom_collections = {
+        category: {
+            link: &amp;#39;/categories/{category}.html&amp;#39;,
+            template: &amp;#39;/category.html&amp;#39;
+        }
+    }
+end
+&lt;/pre&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Depending on where you want your blog and articles you will want to change their respective paths. My blog is located at domain.com/blog/ and my articles are kept in a subfolder called articles. Check out the docs for further information on this so you can customize it to your liking.&lt;/p&gt;
+
+&lt;p&gt;I won&amp;rsquo;t go over every configuration setting in this post here but if you want to see my config file you can &lt;a href="https://github.com/christopherjanzen/christopherjanzen.github.io/blob/source/config.rb"&gt;check it out&lt;/a&gt;. It is important that certain configuration settings go in order, otherwise you&amp;rsquo;ll end up with some issues. Most importantly make sure your blog settings come before &lt;code&gt;relative_links&lt;/code&gt; and that &lt;code&gt;relative_links&lt;/code&gt; comes before &lt;code&gt;directory_indexes&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Wrapping up&lt;/h2&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve figured out your config and gemfile we&amp;rsquo;ll be ready to start building our templates. To recap, what we&amp;rsquo;ve done so far is prepared our machine for Ruby development, installed Middleman, created a project, and modified our config.rb and Gemfile. This sets us up nicely to start working on templates (how our site is displayed) which will be covered in the next articles where I will cover how to push everything to Github, and customizing your site.&lt;/p&gt;
+
+&lt;p&gt;As always, if you find any issues please feel free to send me any corrections through &lt;a href="https://github.com/christopherjanzen/christopherjanzen.github.io"&gt;Github&lt;/a&gt;, &lt;a href="http://www.christopherjanzen.com#contact"&gt;email&lt;/a&gt; or &lt;a href="http://www.twitter.com/cijanzen"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Starting is Hard</title>
+    <link rel="alternate" href="http://www.christopherjanzen.com/blog/starting-is-hard/"/>
+    <id>http://www.christopherjanzen.com/blog/starting-is-hard/</id>
+    <published>2015-06-28T00:00:00-05:00</published>
+    <updated>2015-07-08T20:32:53-05:00</updated>
+    <author>
+      <name>Christopher Janzen</name>
+    </author>
+    <content type="html">&lt;p&gt;Getting started can seem so daunting you want to give up before you even start. In starting a life of freelance I&amp;rsquo;ve had to start a whole lot.&lt;/p&gt;
+
+&lt;p&gt;I’ve been working on my own website for quite some time and it probably took so long because of how hard it is to just start. For example, I wanted to use a new tool to build the site but I had to learn how to use the tool before I could implement it. Then I’ve got to actually design the thing which you’d think is simple cause you’re working for yourself. You quickly realize how little you know yourself and end up having to go on some journey to find your spirit animal.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Doing something difficult requires us to hit the wall that feels uncomfortable, causes uncertainty, and makes the sweat pop out on our forehead. Sometimes the hard work requires us to do something we haven’t done before. Other times we’re using skills we already have, but the nature of the work requires decisions to be made as you build, and decisions are hard (what if I make the wrong one!). Having to make many decisions even harder.” &lt;a href="http://chrisbowler.com/journal/hard-work-is-hard"&gt;—Chris Bowler&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;All of this work takes time and energy that you might spend doing something that’s already familiar and comfortable.&lt;br&gt;
+So why do we do it? Why push ourselves into new uncharted seas when the current stream is quiet enough?&lt;/p&gt;
+
+&lt;h2&gt;Taking back control&lt;/h2&gt;
+
+&lt;p&gt;I think for me part of it is taking back control. &lt;/p&gt;
+
+&lt;p&gt;One of my motivations for going freelance is taking back control.
+I’ve been working retail for nearly 8 years now, and I’ve worked at some pretty awesome places, but one thing is starting to wear me out is the fact that I can’t dictate my own schedule. I knew what I was signing up for but working evenings and weekends away from your family eventually breaks down your relationships and work-life balance.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Evaluating where you’re at with yourself, regardless of how busy you think you are, needs to be a priority. If you are too busy to see you’re pretty much only doing shit you don’t like to do, you’re going to keep on doing that shit until it’s too late.” &lt;a href="https://pjrvs.com/a/shit"&gt;—Paul Jarvis&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Getting started is all about pushing a bit further every day. It doesn’t have to be much but each contribution adds up.&lt;/p&gt;
+
+&lt;h2&gt;Just Ship It&lt;/h2&gt;
+
+&lt;p&gt;I’m a perfectionist. I find it incredibly hard to “just ship it.” I dwell on things for too long, making sure they are just right, but often by the time I make a decision, the moment has passed. I might not have actually made any better changes anyways! Breaking tasks down into smaller pieces, even if it doesn&amp;rsquo;t seem like it adds up to much, can make large tasks seem much easier to take on.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“A Minimum Viable Product isn’t about making a bad first product. It’s about focusing on what’s most important and what solves the problem you set out to in the quickest and easiest way. After that? Well, that’s when the fun begins.” &lt;a href="https://blog.crew.co/start-small-mvp/"&gt;—Mikael Cho&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Learning to just let things go and to put them out there as a minimal viable product has really helped me to stay motivated, learn from feedback, and then reiterate on this to actually be productive.&lt;/p&gt;
+
+&lt;h2&gt;Getting over the fear of failure&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“…fear is a romantic fallacy that we appropriate to create inaction within ourselves, making actions seem as though they have insurmountable odds, so that we don’t even try. We feign safety; we remain motionless. With that we create depravity within ourselves, and we limit our own very potential in life.” &lt;a href="https://blog.crew.co/the-truth-about-the-right-time/"&gt;—Sean Smith&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Crippling fear of failure? I’ve got that.
+What if this doesn’t happen&amp;hellip;what if this &lt;em&gt;does&lt;/em&gt; happen?&lt;/p&gt;
+
+&lt;p&gt;So what? So what if you don’t succeed right away? At least you’re doing something different and hopefully more in line with your true goals. And heck, if the ship starts sinking you can always swim back to shore and regroup before venturing back out into uncharted seas. I’d rather be failing at something worth doing than succeeding at something I hate.&lt;/p&gt;
+
+&lt;p&gt;At some point you just have to start. It can be the smallest of steps or the largest of leaps but one way or another, if you ever intend to do something worth doing, you have to begin.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Stagnating on an idea, or failing to act leads to anxiety, bitterness, and all around angst. We have to let that go, we have to act, we have to move forward. We have to recognize fear for the fantasy that it is, and act logically towards what will make our life, and those around us better in the end-game.” &lt;a href="https://blog.crew.co/the-truth-about-the-right-time/"&gt;—Sean Smith&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Building a Portfolio and Blog with Middleman and Github Pages</title>
+    <link rel="alternate" href="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/"/>
+    <id>http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/</id>
+    <published>2015-06-16T00:00:00-05:00</published>
+    <updated>2015-07-08T20:32:53-05:00</updated>
+    <author>
+      <name>Christopher Janzen</name>
+    </author>
+    <content type="html">&lt;p&gt;Over a series of posts I hope to describe my journey through setting up this website using Middleman on Github. I found a lot of resources but many of them were outdated (mine will be soon enough as well but please contact me so I can update it if you notice anything no longer works) and vague about how to get things working. I like to think I have a good grasp on finding the resources I need to get going but there were a few rough patches that eventually led to eureka moments that I&amp;rsquo;d like to cover through these posts.&lt;/p&gt;
+
+&lt;p&gt;This first post is going to cover what we need before we should even begin to work with Middleman itself.&lt;/p&gt;
+
+&lt;h2&gt;Why choose Middleman?&lt;/h2&gt;
+
+&lt;p&gt;After realizing that I just needed a simple (hah, thats relative) tool to allow me to build a portfolio website with a blog I began digging around for something that would be lighter than Wordpress. Wordpress is great but it can weigh you down if you don&amp;rsquo;t tame it. I didn&amp;rsquo;t want to have to fight a system in order to do what I wanted, plus I wanted to learn something new (and boy, did I ever).&lt;/p&gt;
+
+&lt;p&gt;Jekyll, another static site generator, just didn&amp;rsquo;t seem to quite align with what I was looking for. Honestly I don&amp;rsquo;t even remember the reasons why right now, but that&amp;rsquo;s when I stumbled upon Middleman.&lt;/p&gt;
+
+&lt;p&gt;Middleman and Jekyll both offer pretty much the same thing: A simple static website generator with a great community and lots of extensions to help you get stuff done quicker.
+The real kicker is that because we&amp;rsquo;re using static html, css, and javascript we can get away with very little hosting resources. In fact, we can host our sites for free using Github Pages. &lt;/p&gt;
+
+&lt;p&gt;In the next few articles I&amp;rsquo;ll go over getting everything set up and hosted on Github, but for now we&amp;rsquo;ll start at the beginning.&lt;/p&gt;
+
+&lt;h2&gt;Getting The Apps&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start with what you&amp;rsquo;ll need before we can get anywhere at all. 
+I developed my site on a Mac running OS X 10.10 but this would apply to a few older generations as well I&amp;rsquo;m sure.
+First thing we need is a text editor and terminal or similar (I used &lt;a href="http://www.sublimetext.com"&gt;Sublime Text 3&lt;/a&gt; and &lt;a href="https://www.iterm2.com"&gt;iTerm&lt;/a&gt; respectively).
+You&amp;rsquo;ll be using terminal for installing a number of tools and making sure they are up to date. The text editor is for writing your code of course (One day I&amp;rsquo;ll write a post on my Sublime Text 3 setup). 
+At this point if you have a minimal understanding of how Terminal works you might be concerned, but I had never dealt with Terminal prior to this so as the adage goes, “If I can do it, you can do it too”. I am assuming familiarity with HTML and CSS (that won’t come up in this article). Knowledge of Ruby and Markdown would probably help (I wouldn’t know, I had zero knowledge at the time of starting) but not necessary if you&amp;rsquo;re keeping things simple. 
+These are actually the only apps we need to get started!&lt;/p&gt;
+
+&lt;h2&gt;Installing The Tools&lt;/h2&gt;
+
+&lt;p&gt;Without prior knowledge in the area of installing things through the command line, I found it difficult to find resources that broke down the process so hopefully this helps you get started properly. &lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: If you have access to a Treehouse membership there&amp;rsquo;s a great workshop video on getting command line tools, Homebrew, and Ruby (running through RBenv) installed on your system &lt;a href="https://teamtreehouse.com/library/installing-a-ruby-on-rails-development-environment-in-os-x"&gt;here&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3&gt;Command Line Tools&lt;/h3&gt;
+
+&lt;p&gt;First things first we are going to install Command Line Tools
+&lt;a href="http://railsapps.github.io/xcode-command-line-tools.html"&gt;Here’s a great article&lt;/a&gt; on how to do just that.
+The reason we are downloading these tools is to gain access to commonly used tools like git.
+The big take away from the article (ie. how to do it) is to open Terminal and type this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;
+$ xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: Don’t type the $ sign. This is just an indication that you should be writing the following text into your command prompt. You should also be pressing &lt;code&gt;return&lt;/code&gt; after typing each line of code.
+Notice that you don’t need to install Xcode before installing the Command Line Tools. If you aren’t going to be doing development for Apple based Operating Systems then skip this cause its a large and lengthy app install.&lt;/p&gt;
+
+&lt;p&gt;Okay, so we should now have Command Line Tools installed. you can confirm by typing this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ xcode-select -p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will reveal the path to the installed location of the tools.&lt;/p&gt;
+
+&lt;h3&gt;Setting up Homebrew&lt;/h3&gt;
+
+&lt;p&gt;Next up we’ll be installing something called Homebrew which is described as “Homebrew installs the stuff you need that Apple didn’t”. Essentially this is a package manager that will make it much easier to install &amp;ldquo;stuff&amp;rdquo; like rbenv (we’ll use this to install Ruby), keep that &amp;ldquo;stuff&amp;rdquo; up to date, and in an organized location so everything is easy to find.
+Find out more at: &lt;a href="http://www.brew.sh"&gt;brew.sh&lt;/a&gt; if you are interested in learning more. Otherwise copy the following into your prompt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will install Homebrew on your system. It’s a good practice to make sure everything is up to date and working by running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew update
+$ brew doctor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cool, You should now have Homebrew installed on your system. Emoticons of beer (Homebrew, get it?)&amp;hellip;&lt;/p&gt;
+
+&lt;h3&gt;Installing Rbenv&lt;/h3&gt;
+
+&lt;p&gt;Okay, so now that we’ve installed Homebrew we are going to use it to install rbenv which will then allow us to install Ruby. 
+&lt;a href="https://github.com/sstephenson/rbenv"&gt;Rbenv&lt;/a&gt; is a version manager that allows you to use different versions of Ruby for different projects. If we’re doing simple stuff like installing Middleman this won’t matter too much but it’s an easy way to get up and running. 
+Rbenv is only one of many version managers available. You could also checkout RVM if you want something that some consider more robust and with a larger support community. Each version manager has its own pros and cons which won’t be discussed here, but if you are interested, &lt;a href="http://albertogrespan.com/blog/installing-ruby-the-right-way-on-os-x-using-rbenv/"&gt;these&lt;/a&gt; are a few &lt;a href="https://robots.thoughtbot.com/using-rbenv-to-manage-rubies-and-gems"&gt;articles&lt;/a&gt; which discuss them.
+Enough background history, let’s actually do something.
+To start we are going to install rbenv, ruby-build, rbenv-default-gems, rbenv-gem-rehash, and optionally rbenv-vars using this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew install rbenv ruby-build rbenv-default-gems rbenv-gem-rehash rbenv-vars
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/ruby-build"&gt;Ruby-build&lt;/a&gt; is a “plugin that provides an rbenv install command to compile and install different versions of Ruby on UNIX-like systems.”&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/rbenv-default-gems"&gt;Rbenv-default-gems&lt;/a&gt; is a plugin that “hooks into the rbenv install command to automatically install gems every time you install a new version of Ruby.”&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/rbenv-gem-rehash"&gt;Rbenv-gem-rehash&lt;/a&gt; is a plugin that “automatically runs rbenv rehash every time you install or uninstall a gem.” Essentially it’s a quick time saver.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/sstephenson/rbenv-vars"&gt;Rbenv-vars&lt;/a&gt; is a “plugin for rbenv that lets you set global and project-specific environment variables before spawning Ruby processes.”
+This will go ahead and install everything in one fell swoop.
+Now we have to add a file so that rbenv can run when we launch Terminal. Towards the top of our install log will be a line that says:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’re going to copy that and then, at our prompt, type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ echo &amp;#39;if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi&amp;#39; &amp;gt; ~/.profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &amp;rsquo;.profile&amp;rsquo; file is opened along with Terminal every time and initializes rbenv.
+If you don’t want documentation to be installed every time you install gems (documentation takes longer to install) then you’ll also want to type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ echo &amp;#39;gem: --no-document&amp;#39; &amp;gt; ~/.gemrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can then type: &lt;code&gt;$ exit&lt;/code&gt; and the process will be completed! this will close the Terminal window and you should now open a new one.&lt;/p&gt;
+
+&lt;h3&gt;Installing Ruby&lt;/h3&gt;
+
+&lt;p&gt;We’ll finally be installing ruby. At this time the most current version is 2.2.2 but you can always check at &lt;a href="http://www.ruby-lang.org"&gt;ruby-lang.org&lt;/a&gt; or by typing &lt;code&gt;$ rbenv install --list&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ rbenv install 2.2.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’re now going to tell rbenv to use this version of Ruby by typing: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ rbenv global 2.2.2
+$ rbenv rehash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now be able to type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ ruby -v 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and see that the latest version is being used.
+As mentioned in the treehouse video, a few other tools you might want to install are wget, curl, and imagemagick.
+Type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew install wget curl imagemagick
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’ll also want to update to the latest version of Rubygems by typing: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ gem update --system
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Installing Bundler&lt;/h3&gt;
+
+&lt;p&gt;We are now going to install a Ruby gem called &lt;a href="http://bundler.io"&gt;Bundler&lt;/a&gt; which allows us to install and manage gems that we’ll be using in our apps like Middleman.
+Type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ gem install bundler
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, we’ll install a plugin that makes for less work when we install gems. &lt;a href="https://github.com/carsomyr/rbenv-bundler"&gt;Rbenv-bundler&lt;/a&gt; “saves you from the hassle of having to type bundle exec when working with per-project gem sets and will enable &lt;code&gt;rbenv which&lt;/code&gt; to report Bundler-installed gem executables if available.”&lt;/p&gt;
+
+&lt;p&gt;Type: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;$ brew install rbenv-bundler
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Okay! We are finally done installing the tools necessary to get started with Middleman. It seems like a lot of work just to get up and running but this will make everything else go a lot smoother down the road. There are definitely other gems, plugins, etc. that can make our lives even easier but these are just a few I’ve discovered from different articles.
+Please let me know if you discover any errors here and if you have an suggestions for more useful tools on Twitter &lt;a href="https://twitter.com/cijanzen"&gt;@cijanzen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the next article we’ll actually be installing Middleman and running it on a local server. Go take a break and give yourself a high-five because you just got through the worst of it (I felt like cracking open as many beers as I saw emoticons during this process)!&lt;/p&gt;
+</content>
+  </entry>
+</feed>

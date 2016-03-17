@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width">
+		<!-- Always force latest IE rendering engine or request Chrome Frame -->
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<title>Building a Portfolio and Blog with Middleman and Github Pages - Part 3 | Christopher Janzen</title>
+		<meta name="description" content="Part 3 in a series of posts about getting set up with Middleman and Github Pages.">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@cijanzen">
+		<meta name="twitter:creator" content="@cijanzen">
+		<meta property="og:url" content="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages-part-3/">
+		<meta property="og:title" content="Building a Portfolio and Blog with Middleman and Github Pages - Part 3">
+		<meta property="og:description" content="Part 3 in a series of posts about getting set up with Middleman and Github Pages.">
+		<link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="../../js/all.js" async="true"></script>
+		<!-- Typekit Script -->
+		<script>
+			(function(d) {
+				var config = {
+					kitId: 'tec1mtr',
+					scriptTimeout: 3000
+				},
+				h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+			})(document);
+		</script>
+	</head>
+	<body class="blog blog_building-a-portfolio-and-blog-with-middleman-and-github-pages-part-3 blog_building-a-portfolio-and-blog-with-middleman-and-github-pages-part-3_index">
+		<header class="nav">
+<a id="nav-logo" href="http://www.christopherjanzen.com">				<img src="../../images/christopher-janzen-logo.svg" />
+</a>			<ul>
+				<li><a href="http://www.christopherjanzen.com/blog/">Blog</a></li>
+				<li><a href="http://www.christopherjanzen.com#contact">Contact</a></li>
+			</ul>
+		</header>
+		<div id="main" role="main">
+
+	<article>
+		<h1>Building a Portfolio and Blog with Middleman and Github Pages - Part 3</h1>
+			<p class="subtitle">Setting up Github and deploying our site</p>
+		<h2>Quick recap:</h2>
+
+<p>In the <a href="http://www.christopherjanzen.com/blog/building-a-portfolio-and-blog-with-middleman-and-github-pages/">first article</a> of this series I covered the steps necessary to start development with Ruby. The second article discussed initial setup of Middleman including extensions and the configuration file. We should now have a working local website. If you are in your middleman directory you can run <code>middleman s</code> to start the middleman server and <code>⌃c</code> to stop it. If you visit <a href="http://localhost:4567/">http://localhost:4567/</a> the site should load at your home page. If this is not the case for you then you should go through parts one and two again and double check the <a href="https://middlemanapp.com/basics/install/">Middleman docs</a> to make sure you didn&rsquo;t miss anything. This article will discuss setting up Git and pushing your project to Github so that you can start tracking changes and make your site live.</p>
+
+<h2>Setting up Git</h2>
+
+<p>At this point we&rsquo;re ready to start tracking our changes using Git. If you&rsquo;re planning to host your site on Github it&rsquo;s important that we set things up correctly so that we can push our working directory and have <em>Middleman Deploy</em> actually build our site and put it in the right place for our site to show up. At the time, I wasn&rsquo;t familiar with Git and how it works. I still find it baffling but I do know it&rsquo;s saved my butt a few times when I accidentally ran the wrong command and overwrote a bunch of work. Here are some resources I recommend if you&rsquo;re new to Git:</p>
+
+<p><a href="https://abookapart.com/products/git-for-humans">Git for Humans</a> gives a good overview of Git and presents some best practices.</p>
+
+<p><a href="https://www.git-tower.com/learn/git/ebook/command-line/basics/what-is-version-control">Learn Version Control with Git</a> goes more in-depth while still taking you through the basics.</p>
+
+<p><a href="http://git-scm.com/book/">Pro Git</a>. Straight from the horses mouth, this book also takes you from 0 to pro. Also be sure to checkout the documentation throughout the rest of the site.</p>
+
+<p>Our first step is to initialize Git in our project folder and make our first <em>commit</em>.</p>
+
+<pre><code class="language-bash">
+$ git init
+$ git checkout -b source
+$ git add .
+$ git commit -m'initial commit'
+</code></pre>
+
+<p>There&rsquo;s lots going on here but we are simply starting a new Git project within our Middleman directory, creating a new branch to work on called &lsquo;source&rsquo;, adding everything to Git, and then committing it.</p>
+
+<p>If you&rsquo;re using any other build tools you may also want to consider creating a &rsquo;.gitignore&rsquo; file and adding any directories or files that shouldn&rsquo;t be tracked by Git.</p>
+
+<p>One important side step is to create a <em>.nojekyll</em> file. This will tell Github not to treat our site like a Jekyll static site. You can do this however you&rsquo;d like but since we&rsquo;re probably in Terminal you can type: <code>$ touch .nojekyll</code></p>
+
+<h2>Setting up Github</h2>
+
+<p>We now need to go to our Github account and setup a new repository. It&rsquo;s really important that we use this format: <code>username.github.io</code>. It should, if directions were followed, be the same name as our folder for our Middleman project. So my repository name is <code>christopherjanzen.github.io</code>.</p>
+
+<h2>Putting it all together</h2>
+
+<p>So, we&rsquo;ve started Git on our end and created a repository on Github, now it&rsquo;s time to make them talk.</p>
+
+<p>First we setup our Github repository as the remote:</p>
+
+<pre><code class="language-bash">
+$ git remote add git@github.com:username/username.github.io.git
+</code></pre>
+
+<p>Replace <em>username</em> with your Github username in the above command and then run this command to push our work up to Github:</p>
+
+<pre><code class="language-bash">
+$ git push -u origin source
+</code></pre>
+
+<h2>Deploying to Github User Page</h2>
+
+<p>If you haven&rsquo;t already installed Middleman Deploy now is the time to do so. In your Gemfile add this line:</p>
+
+<pre><code class="language-ruby">
+gem 'middleman-deploy', '~> 1.0'
+</code></pre>
+
+<p>Back in your terminal run the <code>$ bundle install</code> command. Middleman Deploy should now be installed and we can configure it in our config.rb by adding these lines:</p>
+
+<pre><code class="language-ruby">
+# Middleman Deploy
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.branch = 'master'
+  deploy.build_before = true
+end
+</code></pre>
+
+<p>Okay! If everything went well we should be ready to deploy our site. In your terminal run <code>$ middleman deploy</code>. You may be prompted for Github credentials but your site should be ready in a moment. Go ahead and visit <em>username</em>.github.io and be sure to replace <em>username</em> with your own.</p>
+
+<h2>Wrap up</h2>
+
+<p>As always, if you find any issues please feel free to send me any corrections through <a href="https://github.com/christopherjanzen/christopherjanzen.github.io">Github</a>, <a href="http://www.christopherjanzen.com#contact">email</a> or <a href="http://www.twitter.com/cijanzen">Twitter</a>.</p>
+
+	</article>
+</div>
+<!-- <aside>
+	  <h2>Recent Articles</h2>
+	  <ol>
+		  <li><a href="./">Building a Portfolio and Blog with Middleman and Github Pages - Part 3</a> <span>Mar 13</span></li>
+		  <li><a href="../eulogy-for-rdio/">Eulogy for Rdio</a> <span>Nov 24</span></li>
+		  <li><a href="../building-a-portfolio-and-blog-with-middleman-and-github-pages-part-2/">Building a Portfolio and Blog with Middleman and Github Pages - Part 2</a> <span>Jul  9</span></li>
+		  <li><a href="../starting-is-hard/">Starting is Hard</a> <span>Jun 28</span></li>
+		  <li><a href="../building-a-portfolio-and-blog-with-middleman-and-github-pages/">Building a Portfolio and Blog with Middleman and Github Pages</a> <span>Jun 16</span></li>
+	  </ol>
+
+	  <h2>Tags</h2>
+	  <ol>
+	  </ol>
+
+	  <h2>By Year</h2>
+	  <ol>
+		  <li><a href="/blog/2016/">2016 (1)</a></li>
+		  <li><a href="/blog/2015/">2015 (4)</a></li>
+	  </ol>
+</aside> -->
+	<script src="/js/prism.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-62698110-1', 'auto');
+		ga('require', 'linkid', 'linkid.js');
+		ga('send', 'pageview');
+	</script>
+  </body>
+</html>
