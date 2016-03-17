@@ -4,7 +4,7 @@ subtitle: Setting up Github and deploying our site
 summary: Part 3 in a series of posts about getting set up with Middleman and Github Pages.
 description: Part 3 in a series of posts about getting set up with Middleman and Github Pages.
 category: Code
-published: false
+published: true
 ---
 
 ## Quick recap:
