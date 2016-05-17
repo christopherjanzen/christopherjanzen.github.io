@@ -188,3 +188,51 @@ article {
 		@include shift(3);
 	}
 }
+
+// Portfolio Layout
+.project-intro {
+  @include clearfix;
+  @include pad(modular-scale(3) default);
+  @include media($medium) {
+		@include span-columns(3 of 6);
+		@include shift(1);
+		@include pad(0);
+	}
+  @include media($large) {
+		@include span-columns(4 of 10);
+		@include shift(1);
+	}
+  @include media($xlarge) {
+		@include span-columns(5 of 12);
+		@include shift(1);
+	}
+}
+.project-intro-photo {
+  position: relative;
+  width: 100%;
+  @include clearfix;
+  @include pad(modular-scale(3) default);
+  @include media($medium) {
+		@include span-columns(3 of 6);
+		@include shift(1);
+		@include pad(0);
+    padding-top: modular-scale(3);
+	}
+  @include media($large) {
+		@include span-columns(3 of 10);
+		@include shift(1);
+	}
+  @include media($xlarge) {
+		@include span-columns(4 of 12);
+		@include shift(1);
+	}
+}
+.project-intro-photo img {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+  background-image: url(../images/eventlight-gif-opt-compressor.gif);
+  background-position: center;
+  background-size: 86.7%;
+  background-repeat: no-repeat;
+}
